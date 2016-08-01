@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+    <!-- base-package:具体项目具体配置 <context:component-scan base-package="org.neris.xxx.web"> <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" /> </context:component-scan> -->
+
+
+    <mvc:annotation-driven/>
+
+    <!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+
+
+    <context:component-scan base-package="cn.ssm.controller"/>
+    <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+
+
+    <bean p:suffix=".jsp" p:prefix="/WEB-INF/pages/" class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+    <property value="utf-8" name="defaultEncoding"/>
+    <property value="104857600" name="maxUploadSize"/>
+    <!-- <property name="maxInMemorySize"> <value>4096</value> </property> -->
+</bean>
+    <!-- <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> <bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->
+    <!-- 防止jsp等静态资源被拦截 -->
+    <mvc:default-servlet-handler/>
+</beans>

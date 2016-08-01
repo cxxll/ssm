@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ssm.dao.UserMapper">
+    <!-- 用户resultMap -->
+    <resultMap id="BaseResultMap" type="cn.ssm.model.User">
+        <id column="id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
+        <result column="login_name" javaType="java.lang.String" jdbcType="VARCHAR" property="loginName" />
+        <result column="password" javaType="java.lang.String" jdbcType="VARCHAR" property="password" />
+        <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" property="email" />
+        <result column="gender" javaType="java.lang.String" jdbcType="VARCHAR" property="gender" />
+        <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
+        <result column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR" property="phoneNumber" />
+        <result column="age" javaType="java.lang.String" jdbcType="VARCHAR" property="age" />
+    </resultMap>
+
+    <!--用户对招聘公司的一对多，招聘公司与简历的多对多关系resultMap-->
+    <resultMap extends="BaseResultMap" id="userMap" type="cn.ssm.model.User">
+        <collection javaType="cn.ssm.model.Recruit" property="recruits">
+            <id column="rec_id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
+            <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
+            <result column="industry" javaType="java.lang.String" jdbcType="VARCHAR" property="industry" />
+            <result column="nature" javaType="java.lang.String" jdbcType="VARCHAR" property="nature" />
+            <result column="company_size" javaType="java.lang.String" jdbcType="VARCHAR" property="companySize" />
+            <result column="company_profile" javaType="java.lang.String" jdbcType="VARCHAR" property="companyProfile" />
+            <result column="contacts" javaType="java.lang.String" jdbcType="VARCHAR" property="contacts" />
+            <result column="recruitment_telephone" javaType="java.lang.String" jdbcType="VARCHAR" property="recruitmentTelephone" />
+            <result column="company_address" javaType="java.lang.String" jdbcType="VARCHAR" property="companyAddress" />
+            <result column="u_id" javaType="java.lang.String" jdbcType="VARCHAR" property="uId" />
+                <collection column="recruitment_id" ofType="Recruitment" property="recruitment">
+                    <id column="recruitment_id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
+                    <result column="rec_id" javaType="java.lang.String" jdbcType="VARCHAR" property="recId" />
+                    <result column="res_id" javaType="java.lang.String" jdbcType="VARCHAR" property="resId" />
+                         <association javaType="cn.ssm.model.Resume" property="resumes">
+                            <id column="id" jdbcType="VARCHAR" property="id" />
+                             <result column="title" javaType="java.lang.String" jdbcType="VARCHAR" property="title" />
+                             <result column="job_category" javaType="java.lang.String" jdbcType="VARCHAR" property="jobCategory" />
+                             <result column="work_place" javaType="java.lang.String" jdbcType="VARCHAR" property="workPlace" />
+                             <result column="salary_expectation" javaType="java.lang.String" jdbcType="VARCHAR" property="salaryExpectation" />
+                             <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
+                             <result column="gender" javaType="java.lang.String" jdbcType="VARCHAR" property="gender" />
+                             <result column="working_life" javaType="java.lang.String" jdbcType="VARCHAR" property="workingLife" />
+                             <result column="highest_degree" javaType="java.lang.String" jdbcType="VARCHAR" property="highestDegree" />
+                             <result column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR" property="phoneNumber" />
+                         </association>
+                </collection>
+        </collection>
+    </resultMap>
+
+    <select id="login" parameterType="cn.ssm.model.User" resultMap="BaseResultMap">
+        SELECT id,login_name , name,email , gender ,phone_number , password  , age FROM ssm_user WHERE login_name = #{loginName} and password = #{password}
+    </select>
+
+    <select id="findUser" resultMap="userMapper">
+        SELECT
+        user.name,
+        user.gender,
+        user.email,
+        user.phoneNumber  AS user.phone_number,
+        user.age,
+        recruit.name,
+        recruit.industry,
+        recruit.nature,
+        recruit.companySize AS recruit.conpany_size,
+        recruit.companyProfile AS recruit.companty_profile,
+        recruit.contacts AS recruit.contacts,
+        recruit.recruitmentTelephone AS recruit.recruitment_telephone,
+        recruit.companyAddress AS recruit.company_address,
+        recruit.uId AS recruit.u_id,
+        resume.recId AS resume.rec_id
+        resume.resId AS resume.res_id
+        FROM
+        ssm_recruit AS recruit
+        ssm_resume AS resume
+        ssm_user AS user
+        LEFT JOIN ssm_recruit AS recruit ON recruit.u_id = user.id
+        LEFT JOIN ssm_recruitment AS recruitment ON  recruitment.recruitment_id = user.id
+        WHERE
+        user.id = #{id}
+
+    </select>
+
+    <update id="updatePassword" parameterType="java.lang.String">
+        UPDATE
+        ssm_user
+        <set>
+            <if test="newPassword != null">
+                password = #{newPassword}
+            </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateUser" parameterType="cn.ssm.model.User">
+        UPDATE
+        ssm_user
+        <set>
+            <if test="loginName != null">
+                login_name = #{loginName},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber},
+            </if>
+            <if test="gender != null">
+                gender = #{gender}
+            </if>
+            <if test="age != null">
+                age = #{age}
+            </if>
+        </set>
+        WHERE id = #{id};
+    </update>
+
+
+
+    <select id="confirmPassword" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        password
+        FROM
+        ssm_user
+        WHERE
+        id = #{id}
+    </select>
+</mapper>

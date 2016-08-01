@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ssm.dao.ResumeMapper">
+    <!-- 简历resultMap -->
+    <resultMap id="BaseResultMap" type="cn.ssm.model.Resume">
+        <id property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="title" column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="jobCategory" column="job_category" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="workPlace" column="work_place" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="salaryExpectation" column="salary_expectation" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="gender" column="gender" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="workingLife" column="working_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="highestDegree" column="highest_degree" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="phoneNumber" column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <!--招聘公司和简历多对多的resultMap-->
+    <resultMap type="Recruit" id="recruitResumeMap" extends="BaseResultMap">
+        <collection property="recruits" ofType="Recruit">
+            <id property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="industry" column="industry" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="nature" column="nature" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="companySize" column="company_size" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="companyProfile" column="company_profile" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="contacts" column="contacts" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="recruitmentTelephone" column="recruitment_telephone" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <result property="companyAddress" column="company_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+
+    <update id="updateResume" parameterType="cn.ssm.model.Resume">
+        UPDATE
+        ssm_resume
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="jobCategory != null">
+                job_category = #{jobCategory},
+            </if>
+            <if test="workPlace != null">
+                work_place = #{workPlace},
+            </if>
+            <if test="salaryExpectation != null">
+                salary_expectation = #{salaryExpectation},
+            </if>
+            <if test="name != null">
+                name = #{name}
+            </if>
+            <if test="gender != null">
+                gender = #{gender}
+            </if>
+            <if test="workingLife != null">
+                working_life = #{workingLife}
+            </if>
+            <if test="highestDegree != null">
+                highest_degree = #{highestDegree}
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber},
+            </if>
+         </set>
+        WHERE id = #{id};
+    </update>
+
+    <delete id="deleteResume" parameterType="cn.ssm.model.Resume">
+        DELETE
+        FROM
+        ssm_resume
+        WHERE
+        id = #{id}
+    </delete>
+
+    <!--<select id="recruitResumeAnd" resultMap="recruitResumeMap">-->
+        <!--SELECT-->
+        <!--recruit.id AS rec_id,-->
+        <!--recruit.name,-->
+        <!--recruit.industry,-->
+        <!--recruit.nature,-->
+        <!--recruit.companySize AS recruit.company_size,-->
+        <!--recruit.companyProfile AS recruit.company_profile,-->
+        <!--recruit.contacts,-->
+        <!--recruit.recruitmentTelephone AS recruit.recruitment_telephone,-->
+        <!--recruit.companyAddress AS recruit.company_address,-->
+        <!--recruit.price,-->
+        <!--resume.id AS res_id,-->
+        <!--resume.title,-->
+        <!--resume.jobCategory,-->
+        <!--resume.workPlace AS resume.work_place,-->
+        <!--resume.salaryExpectation AS resume.salary_expectation,-->
+        <!--resume.name ,-->
+        <!--resume.gender,-->
+        <!--resume.workingLife AS resume.working_life,-->
+        <!--resume.highestDegree AS resume.highest_degree,-->
+        <!--resume.phoneNumber AS resume.phone_number-->
+        <!--FROM-->
+        <!--ssm_recruit AS recruit-->
+        <!--ssm_resume AS resume-->
+        <!--LEFT JOIN ssm_resume AS resume ON resume.res_id = rec.id-->
+    <!--</select>-->
+
+
+</mapper>
