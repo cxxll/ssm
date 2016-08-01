@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ssm.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.ssm.model.User">
+
+    <!-- 用户resultMap -->
+    <resultMap id="BaseResultMap" type="cn.ssm.model.User">
+        <id column="id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
+        <result column="login_name" javaType="java.lang.String" jdbcType="VARCHAR" property="loginName" />
+        <result column="password" javaType="java.lang.String" jdbcType="VARCHAR" property="password" />
+        <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" property="email" />
+        <result column="gender" javaType="java.lang.String" jdbcType="VARCHAR" property="gender" />
+        <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
+        <result column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR" property="phoneNumber" />
+        <result column="age" javaType="java.lang.String" jdbcType="VARCHAR" property="age" />
+    </resultMap>
+
+    <!-- 用户和招聘公司多对多 -->
+    <resultMap extends="BaseResultMap" id="userRecruitMap" type="User">
+        <collection ofType="Recruit" property="recruits">
+            <id column="id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
+            <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
+            <result column="industry" javaType="java.lang.String" jdbcType="VARCHAR" property="industry" />
+            <result column="nature" javaType="java.lang.String" jdbcType="VARCHAR" property="nature" />
+            <result column="company_size" javaType="java.lang.String" jdbcType="VARCHAR" property="companySize" />
+            <result column="company_profile" javaType="java.lang.String" jdbcType="VARCHAR" property="companyProfile" />
+            <result column="contacts" javaType="java.lang.String" jdbcType="BIGINT" property="contacts" />
+            <result column="recruitment_telephone" javaType="java.lang.String" jdbcType="VARCHAR" property="recruitmentTelephone" />
+            <result column="company_address" javaType="java.lang.String" jdbcType="VARCHAR" property="companyAddress" />
+        </collection>
+    </resultMap>
+</mapper>
