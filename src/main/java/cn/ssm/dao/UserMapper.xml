@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ssm.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="cn.ssm.model.User">
-
     <!-- 用户resultMap -->
     <resultMap id="BaseResultMap" type="cn.ssm.model.User">
         <id column="id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
@@ -15,7 +13,7 @@
         <result column="age" javaType="java.lang.String" jdbcType="VARCHAR" property="age" />
     </resultMap>
 
-    <!-- 用户和招聘公司多对多 -->
+    <!--用户对招聘公司的一对多，招聘公司与简历的多对多关系resultMap-->
     <resultMap extends="BaseResultMap" id="userRecruitMap" type="User">
         <collection ofType="Recruit" property="recruits">
             <id column="id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
@@ -24,12 +22,29 @@
             <result column="nature" javaType="java.lang.String" jdbcType="VARCHAR" property="nature" />
             <result column="company_size" javaType="java.lang.String" jdbcType="VARCHAR" property="companySize" />
             <result column="company_profile" javaType="java.lang.String" jdbcType="VARCHAR" property="companyProfile" />
-            <result column="contacts" javaType="java.lang.String" jdbcType="BIGINT" property="contacts" />
+            <result column="contacts" javaType="java.lang.String" jdbcType="VARCHAR" property="contacts" />
             <result column="recruitment_telephone" javaType="java.lang.String" jdbcType="VARCHAR" property="recruitmentTelephone" />
             <result column="company_address" javaType="java.lang.String" jdbcType="VARCHAR" property="companyAddress" />
+            <result column="u_id" javaType="java.lang.String" jdbcType="VARCHAR" property="uId" />
+                <collection column="recruitment_id" ofType="Recruitment" property="recruitment">
+                    <id column="recruitment_id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
+                    <result column="rec_id" javaType="java.lang.String" jdbcType="VARCHAR" property="recId" />
+                    <result column="res_id" javaType="java.lang.String" jdbcType="VARCHAR" property="resId" />
+                         <association javaType="cn.ssm.model.Resume" property="resumes">
+                            <id column="id" jdbcType="VARCHAR" property="id" />
+                             <result column="title" javaType="java.lang.String" jdbcType="VARCHAR" property="title" />
+                             <result column="job_category" javaType="java.lang.String" jdbcType="VARCHAR" property="jobCategory" />
+                             <result column="work_place" javaType="java.lang.String" jdbcType="VARCHAR" property="workPlace" />
+                             <result column="salary_expectation" javaType="java.lang.String" jdbcType="VARCHAR" property="salaryExpectation" />
+                             <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
+                             <result column="gender" javaType="java.lang.String" jdbcType="VARCHAR" property="gender" />
+                             <result column="working_life" javaType="java.lang.String" jdbcType="VARCHAR" property="workingLife" />
+                             <result column="highest_degree" javaType="java.lang.String" jdbcType="VARCHAR" property="highestDegree" />
+                             <result column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR" property="phoneNumber" />
+                         </association>
+                </collection>
         </collection>
     </resultMap>
-    
     
     <select id="login" parameterType="cn.ssm.model.User" resultMap="BaseResultMap">
         SELECT id,login_name , name,email , gender ,phone_number , password  , age FROM ssm_user WHERE login_name = #{loginName} and password = #{password}
@@ -105,13 +120,7 @@
         WHERE id = #{id};
     </update>
 
-    <!--<delete id="deleteUser" parameterType="cn.ssm.model.User">-->
-            <!--DELETE-->
-                <!--FROM-->
-            <!--ssm_user-->
-              <!--WHERE-->
-                <!--id = #{id}-->
-            <!--</delete>-->
+
 
     <select id="confirmPassword" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT
