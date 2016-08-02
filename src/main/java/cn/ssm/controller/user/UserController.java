@@ -23,12 +23,11 @@ public class UserController extends BaseUserController<User, String> {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public User login(@Valid User user , HttpSession session) {
+    public User loginUser(@Valid User user , HttpSession session) {
         try {
-            User loginUser = this.userService.login(user);
+            User loginUser = this.userService.loginUser(user);
             if(loginUser != null){
                 session.setAttribute("loginUser",loginUser);
                 return loginUser ;
