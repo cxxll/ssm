@@ -32,21 +32,23 @@
   <result jdbcType="VARCHAR" column="phone_number" property="phoneNumber" javaType="java.lang.String"/>
   <result jdbcType="VARCHAR" column="age" property="age" javaType="java.lang.String"/>
 </collection>
+
+
 </resultMap>
   <update id="updateResume" parameterType="cn.ssm.model.Resume">
   UPDATE ssm_resume
-  <set>
-  <if test="title != null"> title = #{title}, </if>
-  <if test="jobCategory != null"> job_category = #{jobCategory}, </if>
-  <if test="workPlace != null"> work_place = #{workPlace}, </if>
-  <if test="salaryExpectation != null"> salary_expectation = #{salaryExpectation}, </if>
-  <if test="name != null"> name = #{name} </if>
-  <if test="gender != null"> gender = #{gender} </if>
-  <if test="workingLife != null"> working_life = #{workingLife} </if>
-  <if test="highestDegree != null"> highest_degree = #{highestDegree} </if>
-  <if test="phoneNumber != null"> phone_number = #{phoneNumber}, </if>
-</set>
-  WHERE id = #{id};
+  SET
+  title = #{title},
+  job_category = #{jobCategory},
+  work_place = #{workPlace},
+  salary_expectation = #{salaryExpectation},
+  name = #{name} ,
+  gender = #{gender} ,
+  working_life = #{workingLife} ,
+  highest_degree = #{highestDegree} ,
+  phone_number = #{phoneNumber}
+  WHERE
+  id = #{id};
 </update>
 
 </mapper>
