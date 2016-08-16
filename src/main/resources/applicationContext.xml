@@ -15,8 +15,10 @@
     http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 自动扫描包 ,将带有注解的类 纳入spring容器管理 -->
-    <context:component-scan base-package="cn.ssm"></context:component-scan>
+    <context:component-scan base-package="cn.ssm">
+    </context:component-scan>
 
+    <bean class=" org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
     <bean id="propertyConfigurer"
     class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -55,13 +57,14 @@
             <property name="testOnReturn" value="false"/>
     </bean>
 
+
     <!-- mybatis文件配置，扫描所有mapper文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource"
           p:configLocation="classpath:mybatis-config.xml"
           p:mapperLocations="classpath:cn/ssm/dao/*Mapper.xml"/>
 
     <!-- spring与mybatis整合配置，扫描所有dao -->
-        <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer" p:basePackage="cn.ssm.dao"
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer" p:basePackage="cn.ssm.dao"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
 
     <!-- 对dataSource 数据源进行事务管理 -->

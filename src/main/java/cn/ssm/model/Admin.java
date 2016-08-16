@@ -30,6 +30,10 @@ public class Admin {
      */
     private String adminPassword;
 
+    public Admin() {
+        super();
+    }
+
     public Admin(String id, String adminUser, String adminPassword) {
         this.id = id;
         this.adminUser = adminUser;

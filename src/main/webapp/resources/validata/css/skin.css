@@ -1,0 +1,47 @@
+﻿
+/*验证失败后,元素项本身样式*/
+.validato_input{
+	background-color:#FFCC33;	
+	border:red 1px solid;
+}
+
+.validator_msg_tip{
+	z-index:1990;
+	color:#666666;
+	font-size:13px;
+	position: absolute;
+}
+
+
+.validator_msg_container_tip{
+	float:left;
+	background-color:#ff9;
+	position:relative;
+}
+
+.validator_msg_successico_tip{
+	border: 1px solid #f96;
+	background-image:url(../images/success.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+
+}
+
+.validator_msg_errorico_tip{
+	border: 1px solid #f96;
+	background-image:url(../images/error.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+
+}
+
+.validator_tip_msg_content{
+	padding-left:16px;
+	padding:8px 9px 4px 20px; 
+	color:#666666;
+	display:block;
+}
+
+.y , .z{position:absolute; left:130px; top:5px;}
+.y{ color:#ff9;  left:-6px;}/*模拟小三角*/
+.z{ color:#f96; left:-7px;}/*模拟小三角*/

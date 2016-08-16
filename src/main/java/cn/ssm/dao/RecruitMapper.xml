@@ -1,159 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.ssm.dao.RecruitMapper">
-    <!-- 招聘公司resultMap -->
-    <resultMap id="BaseResultMap" type="cn.ssm.model.Recruit">
-        <id column="id" javaType="java.lang.String" jdbcType="VARCHAR" property="id" />
-        <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name" />
-        <result column="industry" javaType="java.lang.String" jdbcType="VARCHAR" property="industry" />
-        <result column="nature" javaType="java.lang.String" jdbcType="VARCHAR" property="nature" />
-        <result column="company_size" javaType="java.lang.String" jdbcType="VARCHAR" property="companySize" />
-        <result column="company_profile" javaType="java.lang.String" jdbcType="VARCHAR" property="companyProfile" />
-        <result column="contacts" javaType="java.lang.String" jdbcType="VARCHAR" property="contacts" />
-        <result column="recruitment_telephone" javaType="java.lang.String" jdbcType="VARCHAR" property="recruitmentTelephone" />
-        <result column="company_address" javaType="java.lang.String" jdbcType="VARCHAR" property="companyAddress" />
-        <result column="u_id" javaType="java.lang.String" jdbcType="VARCHAR" property="uId" />
-    </resultMap>
+  <resultMap id="BaseResultMap" type="cn.ssm.model.Recruit" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="nature" property="nature" jdbcType="VARCHAR" />
+    <result column="company_size" property="companySize" jdbcType="VARCHAR" />
+    <result column="company_profile" property="companyProfile" jdbcType="VARCHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="recruitment_telephone" property="recruitmentTelephone" jdbcType="VARCHAR" />
+    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="BIGINT" />
+  </resultMap>
 
-    <!--招聘公司对用户多对一的resultMap-->
-    <resultMap type="User" id="userRecruitMap" extends="BaseResultMap">
-        <collection property="users" ofType="User">
-            <id property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="login_name" column="login_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="password" column="password" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="email" column="email" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="gender" column="gender" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="phoneNumber" column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result property="age" column="age" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        </collection>
-    </resultMap>
+  <!--招聘公司对用户多对一的resultMap-->
 
-    <!--招聘公司对简历多对多的resultMap-->
-    <resultMap type="Recruit" id="recruitResumeMap" extends="BaseResultMap">
-        <association property="resumes" javaType="cn.ssm.model.Resume">
-            <id property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="title" column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="jobCategory" column="job_category" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="workPlace" column="work_place" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="salaryExpectation" column="salary_expectation" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="gender" column="gender" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="workingLife" column="working_life" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="highestDegree" column="highest_degree" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <result property="phoneNumber" column="phone_number" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </association>
-    </resultMap>
 
-    <!--曾经的构想  暂时作废-->
-    <!--<select id="recruitConnect" parameterType="java.lang.String" resultMap="recruitResumeMap">-->
-        <!--SELECT-->
-        <!--res.id ,-->
-        <!--res.title-->
-        <!--res.job_category-->
-        <!--res.work_place-->
-        <!--res.salary_expectation-->
-        <!--res.name-->
-        <!--res.gender-->
-        <!--res.working_life-->
-        <!--res.highest_degree-->
-        <!--res.phone_number-->
-        <!--res.u_id-->
-        <!--us.name AS name-->
-        <!--FROM-->
-        <!--ssm.resume AS res-->
-        <!--LEFT JOIN ssm.user AS us ON res.u_id = us.id-->
-        <!--WHERE-->
-        <!--res.id IN (SELECT-->
-        <!--res_id-->
-        <!--FROM-->
-        <!--ssm_recruit_resume-->
-        <!--WHERE-->
-        <!--rec_id = #{id})-->
-    <!--</select>-->
 
-    <select id="userClothComplete" resultMap="clothBusinessMap">
-        SELECT
-        recruit.id ,
-        recruit.name,
-        recruit.industry,
-        recruit.nature,
-        recruit.companySize AS recruit.company_size,
-        recruit.companyProfile AS recruit.company_profile,
-        recruit.contacts,
-        recruit.recruitmentTelephone AS recruit.recruitment_telephone,
-        recruit.companyAddress AS recruit.company_address,
-        recruit.price,
-        u.id AS u_id,
-        u.name,
-        u.email
-        u.gender,
-        u.phoneNumber AS u.phone_number,
-        u.age
-        FROM
-        ssm_recruit AS recruit
-        LEFT JOIN ssm.user AS u ON recruit.u_id = u.id
-    </select>
+  <resultMap type="Recruit" id="userMap" extends="BaseResultMap">
+  <association property="users" javaType="cn.ssm.model.User">
+   <id property="id" jdbcType="BIGINT" column="id" javaType="java.lang.Long"/>
+    <result property="login_name" jdbcType="VARCHAR" column="login_name" javaType="java.lang.String"/>
+    <result property="password" jdbcType="VARCHAR" column="password" javaType="java.lang.String"/>
+    <result property="email" jdbcType="VARCHAR" column="email" javaType="java.lang.String"/>
+    <result property="gender" jdbcType="VARCHAR" column="gender" javaType="java.lang.String"/>
+    <result property="name" jdbcType="VARCHAR" column="name" javaType="java.lang.String"/>
+    <result property="phoneNumber" jdbcType="VARCHAR" column="phone_number" javaType="java.lang.String"/>
+    <result property="age" jdbcType="VARCHAR" column="age" javaType="java.lang.String"/>
+  </association>
+</resultMap>
 
-    <!--<insert id="addRecruit" parameterType="cn.ssm.model.User">-->
-        <!--INSERT INTO-->
-        <!--ssm_recruit-->
-        <!--(name,-->
-        <!--industry,-->
-        <!--nature,-->
-        <!--company_size,-->
-        <!--company_profile,-->
-        <!--contacts,-->
-        <!--recruitment_telephone,-->
-        <!--company_address)-->
-        <!--VALUE-->
-        <!--(#{name},-->
-        <!--#{industry},-->
-        <!--#{nature},-->
-        <!--#{companySize},-->
-        <!--#{companyProfile},-->
-        <!--#{contacts},-->
-        <!--#{recruitmentTelephone},-->
-        <!--#{companyAddress})-->
-    <!--</insert>-->
+  <resultMap type="Recruit" id="recruitResumeMap" extends="BaseResultMap">
+  <collection property="resumes" ofType="cn.ssm.model.Resume">
+  <id property="id" jdbcType="BIGINT" column="id" javaType="java.lang.Long"/>
+  <result property="title" jdbcType="VARCHAR" column="title" javaType="java.lang.String"/>
+  <result property="jobCategory" jdbcType="VARCHAR" column="job_category" javaType="java.lang.String"/>
+  <result property="workPlace" jdbcType="VARCHAR" column="work_place" javaType="java.lang.String"/>
+  <result property="salaryExpectation" jdbcType="VARCHAR" column="salary_expectation" javaType="java.lang.String"/>
+  <result property="name" jdbcType="VARCHAR" column="name" javaType="java.lang.String"/>
+  <result property="gender" jdbcType="VARCHAR" column="gender" javaType="java.lang.String"/>
+  <result property="workingLife" jdbcType="VARCHAR" column="wor.king_life" javaType="java.lang.String"/>
+  <result property="highestDegree" jdbcType="VARCHAR" column="highest_degree" javaType="java.lang.String"/>
+  <result property="phoneNumber" jdbcType="VARCHAR" column="phone_number" javaType="java.lang.String"/>
+</collection>
+</resultMap>
 
-    <update id="updateRecruit" parameterType="cn.ssm.model.Recruit">
-        UPDATE
-        ssm_recruit
-        <set>
-            <if test="name != null">
-                name = #{name},
-            </if>
-            <if test="industry != null">
-                industry = #{industry},
-            </if>
-            <if test="nature != null">
-                nature = #{nature},
-            </if>
-            <if test="companySize != null">
-                companySize = #{companySize},
-            </if>
-            <if test="companyProfile != null">
-                companyProfile = #{companyProfile},
-            </if>
-            <if test="contacts != null">
-                contacts = #{contacts}
-            </if>
-            <if test="recruitmentTelephone != null">
-                recruitmentTelephone = #{recruitmentTelephone}
-            </if>
-            <if test="companyAddress != null">
-                companyAddress = #{companyAddress}
-            </if>
-        </set>
-        WHERE id = #{id};
-    </update>
 
-    <delete id="deleteRecruit" parameterType="cn.ssm.model.Recruit">
-        DELETE
-        FROM
-        ssm_recruit
-        WHERE
-        id = #{id}
-    </delete>
+  <select id="findRecruitResume" resultMap="recruitResumeMap" parameterType="long"> SELECT recruit.id , recruit.name, resume.id, resume.title resume.jobCategory AS resume.job_category resume.workPlace AS work_place resume.salaryExpectation AS resume.salary_expectation resume.name resume.gender resume.workingLife AS resume.working_life resume.highestDegree AS highest_degree resume.phoneNumbe AS phone_number ress.resId AS ress.res_id FROM ssm_recruit AS recruit left join ssm_resumement AS ress on recruit.id= ress.recId left join ssm_resume AS resume on ress.resId = resume.id where recruit.id = #{id} </select>
+
+  <select id="getRecListByUid" resultMap="BaseResultMap" parameterType="cn.ssm.model.User"> SELECT * FROM ssm_recruit WHERE u_id=#{id} </select>
+
+  <update id="updateRecruit" parameterType="cn.ssm.model.Recruit">
+  UPDATE ssm_recruit
+
+  SET
+  name = #{name},
+  industry = #{industry},
+  nature = #{nature},
+  company_size = #{companySize},
+  company_profile = #{companyProfile},
+  contacts = #{contacts} ,
+  recruitment_telephone = #{recruitmentTelephone} ,
+  company_address = #{companyAddress}
+
+  WHERE id = #{id};
+</update>
+
 </mapper>

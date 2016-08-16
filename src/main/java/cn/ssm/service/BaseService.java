@@ -9,24 +9,24 @@ import java.util.List;
  * Created by Administrator on 2016/7/27.
  */
 public interface BaseService <T>{
-    public int delete(T t) ;
-    public int deleteByExample(Object o) ;
-    public int deleteByPrimaryKey(Object o) ;
-    public int insert(T t) ;
-    public int insertList(List<T> list) ;
-    public int insertSelective(T t) ;
-    public int insertUseGeneratedKeys(T t) ;
-    public List<T> select(T t) ;
-    public T selectOne(T t);
-    public List<T> selectAll() ;
-    public List<T> selectByExample(Object o);
-    public List<T> selectByExampleAndRowBounds(Object o, RowBounds r);
-    public T selectByPrimaryKey(Object o);
-    public List<T> selectByRowBounds(T t, RowBounds r);
-    public int selectCount(T t);
-    public int selectCountByExample(Object o);
-    public int updateByExampleSelective(@Param("record") T t, @Param("example") Object o);
-    public int updateByExample(@Param("record") T t, @Param("example") Object o);
-    public int updateByPrimaryKey(T t);
-    public int updateByPrimaryKeySelective(T t);
+     int delete(T t) ;
+     int deleteByExample(Object o) ;
+     int deleteByPrimaryKey(Object o) ;
+     int insert(T t) ;
+     int insertList(List<T> list) ;
+     int insertSelective(T t) ;
+     int insertUseGeneratedKeys(T t) ;
+     List<T> select(T t) ;
+     T selectOne(T t);
+     List<T> selectAll() ;
+     List<T> selectByExample(Object o);
+     List<T> selectByExampleAndRowBounds(Object o, RowBounds r);
+     T selectByPrimaryKey(Object o);
+     List<T> selectByRowBounds(T t, RowBounds r);
+     int selectCount(T t);
+     int selectCountByExample(Object o);
+     int updateByExampleSelective(@Param("record") T t, @Param("example") Object o);
+     int updateByExample(@Param("record") T t, @Param("example") Object o);
+     int updateByPrimaryKey(T t);
+     int updateByPrimaryKeySelective(T t);
 }

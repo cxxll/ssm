@@ -1,25 +1,27 @@
 package cn.ssm.service;
 
+import cn.ssm.model.Recruit;
 import cn.ssm.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/7/30.
  */
+
 public interface UserService extends BaseService<User>{
-    public  User login(User user);
+     public  User login(User user);
 
-    public int add(User user);
+     int add(User user);
 
-    public User NameIsExit(String name);
+     String NameExist(String loginName);
 
-    int updatePassword(String id, String oldPassword, String newPassword);
+     void updatePassword(Long id, String oldPassword, String newPassword);
 
-    int updateUser(User user);
+     int updateUser(User user);
 
-    int deleteUser(String id);
+      List<Recruit> findUser(Long id);
 
-    List<User> findUser(String id);
 
 }

@@ -18,18 +18,14 @@
     <pagehelper.version>4.1.1</pagehelper.version>
     <version.jackson>2.4.4</version.jackson>
     <hibernate.validator.version>5.1.1.Final</hibernate.validator.version>
-    <mysql.version>5.1.24</mysql.version>
+    <mysql.version>5.1.32</mysql.version>
 
   </properties>
 
 
   <dependencies>
 
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-resources-plugin</artifactId>
-      <version>2.4.3</version>
-    </dependency>
+
     <!-- junit 包 -->
     <dependency>
       <groupId>junit</groupId>
@@ -314,16 +310,16 @@
   </dependencies>
 
   <build>
-    <!-- 把mybatis的mapper XML 文件放到编译目录 , 但resource目录下的xml文件会被忽视编译，so项目刚开始运行时要先注释该工具，之后再取消注释-->
+     <!--把mybatis的mapper XML 文件放到编译目录 , 但resource目录下的xml文件会被忽视编译，so项目刚开始运行时要先注释该工具，之后再取消注释-->
     <resources>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.xml</include>
-        </includes>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
+    <resource>
+      <directory>src/main/java</directory>
+      <includes>
+        <include>**/*.xml</include>
+      </includes>
+      <filtering>true</filtering>
+    </resource>
+  </resources>
 
     <plugins>
       <!-- war包插件 -->
@@ -370,7 +366,7 @@
         </executions>
       </plugin>
 
-      <!--&lt;!&ndash;            &lt;!&ndash;mybatis generator&ndash;&gt;&ndash;&gt;-->
+      <!--            &lt;!&ndash;mybatis generator&ndash;&gt;-->
       <!--<plugin>-->
         <!--<groupId>org.mybatis.generator</groupId>-->
           <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
