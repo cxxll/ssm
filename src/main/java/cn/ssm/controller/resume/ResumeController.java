@@ -1,15 +1,12 @@
 package cn.ssm.controller.resume;
 
-import cn.ssm.model.Recruit;
 import cn.ssm.model.Resume;
 import cn.ssm.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/8/2.
@@ -22,34 +19,40 @@ public class ResumeController extends BaseResumeController<Resume, Long> {
     @Autowired
     private ResumeService resumeService;
 
-    @RequestMapping(value = "/lists")
-    public String lists() {
-        return TEMPLATE_PATH +"lists";
+    @RequestMapping(value = "/list")
+    public String list(Model model) {
+        model.addAttribute("resumes",this.resumeService.selectAll());
+        return TEMPLATE_PATH +"list";
+    }
+
+    @RequestMapping(value = "/listA")
+    public String listA() {
+        return TEMPLATE_PATH +"addResume";
     }
 
     @RequestMapping("updateRes")
-    @ResponseBody
-    public Resume updateRes(Long id){
-        return this.resumeService.selectByPrimaryKey(id);
+    public String updateRes(Long id,Model model){
+        model.addAttribute("res",this.resumeService.selectByPrimaryKey(id));
+        return TEMPLATE_PATH +"updateRes";
     }
 
     @RequestMapping("update")
-    @ResponseBody
-    public int updateResume(Resume resume) {
-        return this.resumeService.updateResume(resume);
+    public String updateResume(Resume resume) {
+         this.resumeService.updateResume(resume);
+            Long  id =resume.getId();
+        return  "redirect:/resume/updateRes?id=" +id;
 
     }
 
     @RequestMapping("delete")
-    @ResponseBody
-    public int deleteRes(Long id){
-        return this.resumeService.deleteByPrimaryKey(id) ;
+    public String deleteRes(Long id){
+     this.resumeService.deleteByPrimaryKey(id);
+        return "redirect:/resume/list";
     }
 
     @RequestMapping("add")
-    @ResponseBody
-    public int add(Resume resume) {
-        return this.resumeService.add(resume);
-
+    public String add(Resume resume) {
+        this.resumeService.add(resume);
+        return "redirect:/resume/list";
     }
 }

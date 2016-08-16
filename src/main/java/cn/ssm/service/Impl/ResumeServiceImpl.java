@@ -8,6 +8,8 @@ import cn.ssm.util.BaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ResumeServiceImpl  extends BaseServiceImpl<Resume>  implements ResumeService {
 
@@ -28,5 +30,9 @@ public class ResumeServiceImpl  extends BaseServiceImpl<Resume>  implements Resu
     @Override
     public int add(Resume resume) {
         return  this.resumeMapper.insert(resume);
+    }
+
+    public List<Resume> all(){
+        return  this.resumeMapper.all();
     }
 }

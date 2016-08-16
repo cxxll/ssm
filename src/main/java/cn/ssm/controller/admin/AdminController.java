@@ -17,14 +17,13 @@ import javax.validation.Valid;
  */
 
 @Controller
-@RequestMapping(value = "admin/admin")
+@RequestMapping(value = "admin")
 public class AdminController extends BaseAdminController<Admin, String> {
 
     @Autowired
     private AdminService adminServices;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
     public Admin loginAdmin(@Valid Admin admin , HttpSession session) {
         try {
             Admin loginAdmin = this.adminServices.loginAdmin(admin);
@@ -41,14 +40,12 @@ public class AdminController extends BaseAdminController<Admin, String> {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    @ResponseBody
     public int logoutA(HttpSession session) {
         session.removeAttribute("loginAdmin");
         return 0;
     }
 
     @RequestMapping("add")
-    @ResponseBody
     public int add(Admin admin) {
         return this.adminServices.add(admin);
 

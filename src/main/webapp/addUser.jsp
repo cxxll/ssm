@@ -176,7 +176,7 @@
                                        validata-options="validType:'Email',msg:'信箱格式不正确'">
                             </div>
                                 <div class="form-group">
-                                    <input type="radio" name="gender" value="男" checked />男
+                                    <input type="radio" name="gender" value="男"  />男
                                     <input type="radio" name="gender" value="女" validata-options="validType:'Group',msg:'必须选定一个性别'" />女
 
                                 </div>

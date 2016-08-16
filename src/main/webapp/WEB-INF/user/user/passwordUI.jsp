@@ -294,16 +294,7 @@
                         <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="flot.html">Flot Charts</a>
-                            </li>
-                            <li>
-                                <a href="morris.html">Morris.js Charts</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="${pageContext.request.contextPath}/resume/list"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历中心<span class="fa arrow"></span></a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/recruit/getRecListByUid?id=${loginUser.id}"><i class="fa fa-table fa-fw"></i> 招聘页</a>

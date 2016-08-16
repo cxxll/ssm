@@ -22,6 +22,8 @@ public class Resume {
      *
      * @mbggenerated
      */
+
+    private  String title;
     private String jobCategory;
 
     /**
@@ -83,8 +85,10 @@ public class Resume {
     @Transient
     private List<Recruit> recruits;
 
-    public Resume(Long id, String jobCategory, String workPlace, String salaryExpectation, String name, String gender, String workingLife, String highestDegree, String phoneNumber, List<Recruit> recruits) {
+
+    public Resume(Long id, String title, String jobCategory, String workPlace, String salaryExpectation, String name, String gender, String workingLife, String highestDegree, String phoneNumber, List<Recruit> recruits) {
         this.id = id;
+        this.title = title;
         this.jobCategory = jobCategory;
         this.workPlace = workPlace;
         this.salaryExpectation = salaryExpectation;
@@ -95,6 +99,7 @@ public class Resume {
         this.phoneNumber = phoneNumber;
         this.recruits = recruits;
     }
+
     public Resume() {
         super();
     }
@@ -322,10 +327,19 @@ public class Resume {
         this.recruits = recruits;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Resume{" +
-                "id='" + id + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", jobCategory='" + jobCategory + '\'' +
                 ", workPlace='" + workPlace + '\'' +
                 ", salaryExpectation='" + salaryExpectation + '\'' +

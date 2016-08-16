@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2016/8/13
+  Time: 22:21
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>个人中心</title>
-
+    <title>招聘页面</title>
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/theme/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -48,6 +54,8 @@
             </button>
             <a class="navbar-brand" href="${pageContext.request.contextPath}/user/theme">XX招聘网</a>
         </div>
+        <!-- /.navbar-header -->
+
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
@@ -269,10 +277,10 @@
                         <div class="input-group custom-search-form">
                             <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
                         </div>
                         <!-- /input-group -->
                     </li>
@@ -342,18 +350,22 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-files-o fa-fw"></i> 个人信息<span class="fa arrow"></span></a>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o fa-fw"></i>个人信息<span class="fa arrow"></span></a>
                         <ul class="nav nav-fourth-level">
-                            <li>
-                                <a class="active" href="${pageContext.request.contextPath}/user/theme">首页</a>
+
+                            <li><a href="${pageContext.request.contextPath}/user/theme"><i class="fa fa-user fa-fw"></i> 首页</a>
                             </li>
                             <li>
-                                <a class="active" href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}">修改密码</a>
+                                <a href="${pageContext.request.contextPath}/user/updateUI?id=${loginUser.id}">修改信息</a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/user/">退出</a>
+                                <a href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}">修改密码</a>
                             </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/loginout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+                            </li>
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -369,36 +381,55 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="${pageContext.request.contextPath}/user/update?id=${loginUser.id}"  method="post">
+                    <form action="${pageContext.request.contextPath}/resume/add"  method="post">
                         <fieldset>
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <div class="hidden">
-                                        <input name="id" type="hidden" value="${loginUser.id}"/>
+                                    <div class="form-group">
+                                        <label for="title">标题</label>
+                                        <input class="form-control" id="title" name="title" type="text" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jobCategory">职位类别</label>
+                                        <input class="form-control"  id="jobCategory" name="jobCategory" type="text" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="workPlace">工作地点</label>
+                                        <input class="form-control"  id="workPlace" name="workPlace" type="text" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="salaryExpectation">期望薪资</label>
+                                        <input class="form-control"  id="salaryExpectation" name="salaryExpectation" type="text" >
                                     </div>
                                     <div class="form-group">
                                         <label for="name">姓名</label>
-                                        <input class="form-control" id="name" name="name" type="text" value="${loginUser.name}">
+                                        <input class="form-control"  id="name" name="name" type="text" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">邮箱</label>
-                                        <input class="form-control"  id="email" name="email" type="text" value="${loginUser.email}">
+                                        <label for="gender">性别</label>
+                                        <br>
+                                        <input type="radio" name="gender" id="gender" value="男"  />男
+                                        <label for="genders"></label>
+                                        <input type="radio" name="gender" id="genders" value="女"  />女
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="workingLife">工作年限</label>
+                                        <input class="form-control"  id="workingLife" name="workingLife" type="text" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="highestDegree">学历</label>
+                                        <input class="form-control"  id="highestDegree" name="highestDegree" type="text" >
                                     </div>
                                     <div class="form-group">
                                         <label for="phoneNumber">电话号码</label>
-                                        <input class="form-control"  id="phoneNumber" name="phoneNumber" type="text" value="${loginUser.phoneNumber}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="age">年龄</label>
-                                        <input class="form-control"  id="age" name="age" type="text" value="${loginUser.age}">
+                                        <input class="form-control"  id="phoneNumber" name="phoneNumber" type="text" >
                                     </div>
                                     <div class="form-group">
                                         <label for="submit">提交</label>
                                         <input class="form-control"  id="submit"  type="submit" >
-
                                     </div>
-                            </div>
                                 </div>
+                            </div>
                         </fieldset>
                     </form>
                 </div>
@@ -413,6 +444,8 @@
 </div>
 <!-- /#wrapper -->
 
+<!-- /#wrapper -->
+
 <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/resources/theme/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -424,6 +457,8 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="${pageContext.request.contextPath}/resources/theme/dist/js/sb-admin-2.js"></script>
+
+
 
 </body>
 

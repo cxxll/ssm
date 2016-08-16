@@ -4,24 +4,18 @@ import cn.ssm.model.Recruit;
 import cn.ssm.model.User;
 import cn.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
+
 
 /**
  * Created by Administrator on 2016/8/1.
@@ -69,12 +63,6 @@ public class UserController extends BaseUserController<User, Long> {
         }
     }
 
-    /**
-     * 用户登出
-     *
-     * @param session
-     * @return
-     */
     @RequestMapping(value = "/loginout", method = RequestMethod.GET)
     public String loginout(HttpSession session) {
         session.removeAttribute("loginUser");
@@ -100,11 +88,7 @@ public class UserController extends BaseUserController<User, Long> {
         return TEMPLATE_PATH +"updateUI";
     }
 
-    /**
-     * 用户->个人主页->个人信息->修改信息
-     * @param user
-     * @return
-     */
+
     @RequestMapping("update")
     public String update(User user ,HttpSession session) {
             try {

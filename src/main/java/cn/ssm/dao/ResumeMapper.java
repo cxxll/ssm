@@ -97,4 +97,6 @@ public interface ResumeMapper extends BaseMapper<Resume>{
     int updateByPrimaryKey(Resume record);
 
     int updateResume(Resume resume);
+
+    List<Resume> all();
 }

@@ -43,12 +43,18 @@
   work_place = #{workPlace},
   salary_expectation = #{salaryExpectation},
   name = #{name} ,
-  gender = #{gender} ,
   working_life = #{workingLife} ,
   highest_degree = #{highestDegree} ,
   phone_number = #{phoneNumber}
   WHERE
   id = #{id};
 </update>
+
+  <select id="all" resultMap="BaseResultMap" parameterType="cn.ssm.model.Resume">
+  SELECT
+  *
+  FROM
+  ssm_resume
+  </select>
 
 </mapper>
