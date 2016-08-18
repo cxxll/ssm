@@ -24,7 +24,7 @@
     <![endif]-->
 
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}{pageContext.request.contextPath}/resources/user/ico/favicon.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/user/ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath}/resources/user/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.request.contextPath}/resources/user/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath}/resources/user/ico/apple-touch-icon-72-precomposed.png">

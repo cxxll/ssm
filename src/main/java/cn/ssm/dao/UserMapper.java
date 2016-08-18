@@ -106,4 +106,22 @@ public interface UserMapper extends BaseMapper<User>{
     int updateUser(User user);
 
     List<Recruit>findUser(Long id) ;
+
+    /**
+     * 使用注解方式传入多个参数，用户产品分页，通过登录用户ID查询
+     * @param
+     * @param
+     * @return startPos},#{pageSize}
+     */
+    public List<User> selectProductsByPage(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize);
+
+    /**
+     *
+     * @param
+     * @return
+     */
+    public int getProductsCount();
+
+
+    void batchInsert(List<User> userList);
 }

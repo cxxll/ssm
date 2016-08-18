@@ -80,37 +80,5 @@
         <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
-    <!--&lt;!&ndash;&lt;!&ndash; 商家拦截器 &ndash;&gt;&ndash;&gt;-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/admin/business/**" />-->
-            <!--<bean class="aode.tb.interceptors.BusinessSessionInterceptor">-->
-                <!--&lt;!&ndash;   &lt;!&ndash; 不需要session验证的地址 &ndash;&gt;&ndash;&gt;-->
-                <!--<property name="excludeUrls">-->
-                    <!--<list>-->
-                        <!--<value>/admin/business/login</value>-->
-                        <!--<value>/admin/business/logout</value>-->
-                    <!--</list>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
-
-    <!--&lt;!&ndash;&lt;!&ndash; 商家拦截器 &ndash;&gt;&ndash;&gt;-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/admin/cloth/**" />-->
-            <!--<bean class="aode.tb.interceptors.BusinessContactInterceptor">-->
-                <!--&lt;!&ndash;   &lt;!&ndash; 不需要session验证的地址 &ndash;&gt;&ndash;&gt;-->
-                <!--<property name="limitUrl">-->
-                    <!--<list>-->
-                        <!--<value>/admin/cloth/save</value>-->
-                        <!--<value>/admin/cloth/delete</value>-->
-                        <!--<value>/admin/cloth/update</value>-->
-                    <!--</list>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
 
 </beans>

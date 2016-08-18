@@ -50,7 +50,7 @@
 
   <update id="updateUser" parameterType="cn.ssm.model.User">
   UPDATE ssm_user
-SET
+  SET
  email = #{email},
   phone_number = #{phoneNumber},
   name = #{name},
@@ -59,4 +59,16 @@ SET
   WHERE id = #{id};
 </update>
 
+  <!-- 分页SQL语句 -->
+  <select id="selectProductsByPage" resultMap="BaseResultMap"> select * from ssm_user limit #{startPos},#{pageSize} </select>
+
+  <!-- 取得记录的总数 -->
+  <select id="getProductsCount" resultType="int"> SELECT COUNT(*) FROM ssm_user </select>
+
+  <!-- 执行批量导入操作 -->
+  <insert id="batchInsert" parameterType="ArrayList">
+  INSERT INTO ssm_user( id, loginName, password)
+  <foreach separator="union all" index="index" item="item" collection="list"> SELECT #{item.id, jdbcType=BIGINT}, #{item.loginName, jdbcType=VARCHAR}, #{item.password, jdbcType=VARCHAR} FROM DUAL </foreach>
+
+</insert>
 </mapper>

@@ -7,10 +7,14 @@ import cn.ssm.model.UserExample;
 import cn.ssm.service.BaseService;
 import cn.ssm.service.UserService;
 import cn.ssm.util.BaseMapper;
+import cn.ssm.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,10 +51,9 @@ public class UserServiceImpl extends BaseServiceImpl<User>  implements UserServi
         UserExample userExample = new UserExample();
         userExample.createCriteria().andLoginNameEqualTo(loginName) ;
         List<User> usersExampleList = this.userMapper.selectByExample(userExample);
-
         if(usersExampleList.size()>0){
         return "true";
-    }else {
+        }else {
             return  "false";
         }
         }
@@ -75,5 +78,39 @@ public class UserServiceImpl extends BaseServiceImpl<User>  implements UserServi
     public List<Recruit> findUser(Long id) {
       return   this.userMapper.findUser(id);
     }
+
+    @Override
+    public Page<User> showProductsByPage(HttpServletRequest request, HttpServletResponse response) {
+
+            String pageNow = request.getParameter("pageNow");
+
+            Page<User> page = null;
+
+            List<User> products = new ArrayList<User>();
+
+            int totalCount =  userMapper.getProductsCount();
+
+            if (pageNow != null) {
+                page = new Page(totalCount, Integer.parseInt(pageNow));
+                products = this.userMapper.selectProductsByPage(page.getStartPos(), page.getPageSize());
+            } else {
+                page = new Page(totalCount, 1);
+                products = this.userMapper.selectProductsByPage(page.getStartPos(), page.getPageSize());
+            }
+
+            request.setAttribute("products", products);
+            request.setAttribute("page", page);
+
+            page.setRecordList(products);
+
+            return page;
+
+        }
+
+    @Override
+    public void batchInsert(List<User> userList) {
+        userMapper.batchInsert(userList);
+    }
+
 
 }

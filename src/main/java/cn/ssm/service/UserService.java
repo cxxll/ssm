@@ -2,8 +2,11 @@ package cn.ssm.service;
 
 import cn.ssm.model.Recruit;
 import cn.ssm.model.User;
+import cn.ssm.util.Page;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -23,5 +26,10 @@ public interface UserService extends BaseService<User>{
 
       List<Recruit> findUser(Long id);
 
+
+     Page<User> showProductsByPage(HttpServletRequest request, HttpServletResponse response);
+
+
+     void batchInsert(List<User> userList);
 
 }
