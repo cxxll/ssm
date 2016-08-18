@@ -60,6 +60,21 @@
         <property name="maxInMemorySize" value="40960"/>
     </bean>
 
+    <bean   class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+
+        <property name="messageConverters">
+
+            <list>
+
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+
+            </list>
+
+        </property>
+
+    </bean>
     <!--&lt;!&ndash; 用户登陆拦截器 &ndash;&gt;-->
     <!--<mvc:interceptors>-->
         <!--<mvc:interceptor>-->

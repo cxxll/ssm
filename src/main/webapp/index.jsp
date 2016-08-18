@@ -167,10 +167,10 @@
 
                 if (code.length==0)
             {
-                document.getElementById("myDiv").innerHTML="";//登录中的提示,在未输入信息时清空
+                document.getElementById("code").innerHTML="";//登录中的提示,在未输入信息时清空
                 return;
             }
-            xmlhttp.open("POST","${pageContext.request.contextPath}/user/login?code="+code,true);
+            xmlhttp.open("POST","${pageContext.request.contextPath}/users/validate?code="+code,true);
 
             xmlHttp.onreadystatechange = checkCodeCallback;
             xmlHttp.send(null); // 发送请求，不设置参数
@@ -182,9 +182,11 @@
                 if (xmlHttp.status == 200){         // HTTP操作正常
                     var text = xmlHttp.responseText;// 接收返回内容
                     if (text == "true"){
-                        document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                        document.getElementById("code").innerHTML = "验证码输入正确";
+                        alert("code");
                     }else {
-                        document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                        document.getElementById("code").innerHTML = "验证码输入错误，请重新输入";
+                        alert("code");
                     }
                 }
             }

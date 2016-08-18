@@ -2,6 +2,7 @@ package cn.ssm.controller.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -89,6 +90,7 @@ public class CodeController {
 
     //检验验证码是否正确
     @RequestMapping("/validate")
+    @ResponseBody
     public void login(HttpServletRequest request,HttpServletResponse response) throws IOException{
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");

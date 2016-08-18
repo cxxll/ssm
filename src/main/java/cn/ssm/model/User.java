@@ -3,6 +3,7 @@ package cn.ssm.model;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Table(name = "ssm_user")
@@ -22,6 +23,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @NotNull
     private String loginName;
 
     /**
@@ -30,6 +32,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @NotNull
     private String password;
 
     /**
