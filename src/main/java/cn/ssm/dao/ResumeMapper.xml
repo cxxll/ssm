@@ -16,10 +16,9 @@
     <result column="working_life" property="workingLife" jdbcType="VARCHAR" />
     <result column="highest_degree" property="highestDegree" jdbcType="VARCHAR" />
     <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="BIGINT" />
   </resultMap>
   <!--招聘公司和简历多对多的resultMap-->
-
-
 
   <resultMap type="Recruit" id="recruitResumeMap" extends="BaseResultMap">
   <collection property="recruits" ofType="cn.ssm.model.Recruit">
@@ -32,9 +31,22 @@
   <result jdbcType="VARCHAR" column="phone_number" property="phoneNumber" javaType="java.lang.String"/>
   <result jdbcType="VARCHAR" column="age" property="age" javaType="java.lang.String"/>
 </collection>
+  </resultMap>
+
+    <resultMap type="Resume" id="usersMap" extends="BaseResultMap">
+      <association property="users" javaType="cn.ssm.model.User">
+        <id property="id" jdbcType="BIGINT" column="id" javaType="java.lang.Long"/>
+        <result property="login_name" jdbcType="VARCHAR" column="login_name" javaType="java.lang.String"/>
+        <result property="password" jdbcType="VARCHAR" column="password" javaType="java.lang.String"/>
+        <result property="email" jdbcType="VARCHAR" column="email" javaType="java.lang.String"/>
+        <result property="gender" jdbcType="VARCHAR" column="gender" javaType="java.lang.String"/>
+        <result property="name" jdbcType="VARCHAR" column="name" javaType="java.lang.String"/>
+        <result property="phoneNumber" jdbcType="VARCHAR" column="phone_number" javaType="java.lang.String"/>
+        <result property="age" jdbcType="VARCHAR" column="age" javaType="java.lang.String"/>
+      </association>
+    </resultMap>
 
 
-</resultMap>
   <update id="updateResume" parameterType="cn.ssm.model.Resume">
   UPDATE ssm_resume
   SET
@@ -50,6 +62,7 @@
   id = #{id};
 </update>
 
+  <select id="getResListByUid" resultMap="BaseResultMap" parameterType="cn.ssm.model.User"> SELECT * FROM ssm_resume WHERE u_id=#{id} </select>
 
 
 </mapper>

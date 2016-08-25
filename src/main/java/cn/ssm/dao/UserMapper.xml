@@ -24,10 +24,26 @@
       <result property="contacts" jdbcType="VARCHAR" column="contacts" javaType="java.lang.String"/>
       <result property="recruitmentTelephone" jdbcType="VARCHAR" column="recruitment_telephone" javaType="java.lang.String"/>
       <result property="companyAddress" jdbcType="VARCHAR" column="company_address" javaType="java.lang.String"/>
-      <result property="uId" jdbcType="VARCHAR" column="u_id" javaType="java.lang.String"/>
+      <result property="uId" jdbcType="BIGINT" column="u_id" javaType="java.lang.Long"/>
     </collection>
   </resultMap>
 
+  <!--用户对招聘公司的一对多resultMap-->
+  <resultMap type="cn.ssm.model.User" id="usersMapper" extends="BaseResultMap">
+    <collection property="resumes" javaType="cn.ssm.model.Resume">
+      <id property="id" jdbcType="BIGINT" column="rec_id" javaType="java.lang.Long"/>
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="job_category" property="jobCategory" jdbcType="VARCHAR" />
+      <result column="work_place" property="workPlace" jdbcType="VARCHAR" />
+      <result column="salary_expectation" property="salaryExpectation" jdbcType="VARCHAR" />
+      <result column="name" property="name" jdbcType="VARCHAR" />
+      <result column="gender" property="gender" jdbcType="VARCHAR" />
+      <result column="working_life" property="workingLife" jdbcType="VARCHAR" />
+      <result column="highest_degree" property="highestDegree" jdbcType="VARCHAR" />
+      <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+      <result property="uId" jdbcType="BIGINT" column="u_id" javaType="java.lang.Long"/>
+    </collection>
+  </resultMap>
 
 
   <select id="login" resultMap="BaseResultMap" parameterType="cn.ssm.model.User"> SELECT id,login_name , password ,email , gender , name ,phone_number , age FROM ssm_user WHERE login_name = #{loginName} and password = #{password} </select>

@@ -101,7 +101,7 @@
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/resume/list"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历中心<span class="fa arrow"></span></a>
+                        <a href="${pageContext.request.contextPath}/resume/getResListByUid?id=${loginUser.id}"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历中心<span class="fa arrow"></span></a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/recruit/getRecListByUid?id=${loginUser.id}"><i class="fa fa-table fa-fw"></i> 招聘页</a>
@@ -181,6 +181,9 @@
                                     <div class="form-group">
                                         <label for="phoneNumber">电话号码</label>
                                         <input class="form-control"  id="phoneNumber" name="phoneNumber" type="text" >
+                                    </div>
+                                    <div class="hidden">
+                                        <input name="uId" type="text" value="${loginUser.id}"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="submit">提交</label>

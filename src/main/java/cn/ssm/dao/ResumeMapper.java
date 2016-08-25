@@ -4,6 +4,7 @@ import cn.ssm.model.Resume;
 import cn.ssm.model.ResumeExample;
 import java.util.List;
 
+import cn.ssm.model.User;
 import cn.ssm.util.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -97,5 +98,7 @@ public interface ResumeMapper extends BaseMapper<Resume>{
     int updateByPrimaryKey(Resume record);
 
     int updateResume(Resume resume);
+    List<User> getResListByUid(User user);
 
+    List<Resume> findRecruitResume(Long id);
 }

@@ -87,7 +87,7 @@ public class Recruit {
      * @mbggenerated
      */
 
-    private String uId;
+    private Long uId;
 
     @Transient
     private User user;
@@ -99,7 +99,7 @@ public class Recruit {
         super();
     }
 
-    public Recruit(String recruitmentTelephone, Long id, String name, String industry, String nature, String companySize, String companyProfile, String contacts, String companyAddress, String uId, User user, List<Resume> resumes) {
+    public Recruit(String recruitmentTelephone, Long id, String name, String industry, String nature, String companySize, String companyProfile, String contacts, String companyAddress, Long uId, User user, List<Resume> resumes) {
         this.recruitmentTelephone = recruitmentTelephone;
         this.id = id;
         this.name = name;
@@ -338,7 +338,7 @@ public class Recruit {
      *
      * @mbggenerated
      */
-    public String getuId() {
+    public Long getuId() {
         return uId;
     }
 
@@ -350,8 +350,8 @@ public class Recruit {
      *
      * @mbggenerated
      */
-    public void setuId(String uId) {
-        this.uId = uId == null ? null : uId.trim();
+    public void setuId(Long uId) {
+        this.uId = uId == null ? null : uId;
     }
 
     public User getUser() {

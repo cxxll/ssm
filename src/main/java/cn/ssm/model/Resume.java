@@ -82,11 +82,16 @@ public class Resume {
      */
     private String phoneNumber;
 
+    private Long uId;
+
+    @Transient
+    private User user;
+
     @Transient
     private List<Recruit> recruits;
 
 
-    public Resume(Long id, String title, String jobCategory, String workPlace, String salaryExpectation, String name, String gender, String workingLife, String highestDegree, String phoneNumber, List<Recruit> recruits) {
+    public Resume(Long id, String title, String jobCategory, String workPlace, String salaryExpectation, String name, String gender, String workingLife, String highestDegree, String phoneNumber, Long uId, User user, List<Recruit> recruits) {
         this.id = id;
         this.title = title;
         this.jobCategory = jobCategory;
@@ -97,6 +102,8 @@ public class Resume {
         this.workingLife = workingLife;
         this.highestDegree = highestDegree;
         this.phoneNumber = phoneNumber;
+        this.uId = uId;
+        this.user = user;
         this.recruits = recruits;
     }
 
@@ -335,6 +342,22 @@ public class Resume {
         this.title = title;
     }
 
+    public Long getuId() {
+        return uId;
+    }
+
+    public void setuId(Long uId) {
+        this.uId = uId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Resume{" +
@@ -348,6 +371,8 @@ public class Resume {
                 ", workingLife='" + workingLife + '\'' +
                 ", highestDegree='" + highestDegree + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", uId='" + uId + '\'' +
+                ", user=" + user +
                 ", recruits=" + recruits +
                 '}';
     }

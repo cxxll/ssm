@@ -1,6 +1,7 @@
 package cn.ssm.controller.resume;
 
 import cn.ssm.model.Resume;
+import cn.ssm.model.User;
 import cn.ssm.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,12 +48,19 @@ public class ResumeController extends BaseResumeController<Resume, Long> {
     @RequestMapping("delete")
     public String deleteRes(Long id){
      this.resumeService.deleteByPrimaryKey(id);
-        return "redirect:/resume/list";
+        return "redirect:/user/theme" ;
     }
 
     @RequestMapping("add")
     public String add(Resume resume) {
         this.resumeService.add(resume);
-        return "redirect:/resume/list";
+        Long id = resume.getuId();
+        return "redirect:/resume/getResListByUid?id=" +id;
+    }
+
+    @RequestMapping("getResListByUid")              //model 减少侵入性，代替ServletRequest  request
+    public String getResListByUid(User user, Model model) {
+        model.addAttribute("resumes",this.resumeService.getResListByUid(user));
+        return TEMPLATE_PATH +"list";
     }
 }

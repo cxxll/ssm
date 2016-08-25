@@ -94,11 +94,15 @@ public class User {
     @Transient
     private List<Recruit> recruits;
 
+    @Transient
+    private List<Resume> resumes;
+
+
     public User() {
         super();
     }
 
-    public User(Long id, String loginName, String password, String email, String gender, String name, String phoneNumber, String age, List<Recruit> recruits) {
+    public User(Long id, String loginName, String password, String email, String gender, String name, String phoneNumber, String age, List<Recruit> recruits, List<Resume> resumes) {
         this.id = id;
         this.loginName = loginName;
         this.password = password;
@@ -108,6 +112,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.age = age;
         this.recruits = recruits;
+        this.resumes = resumes;
     }
 
     public User(Long id, String loginName, String password, String email, String gender, String name, String phoneNumber, String age) {
@@ -327,6 +332,7 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", age='" + age + '\'' +
                 ", recruits=" + recruits +
+                ", resumes=" + resumes +
                 '}';
     }
 }

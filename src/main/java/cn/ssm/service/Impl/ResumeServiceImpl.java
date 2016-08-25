@@ -3,6 +3,7 @@ package cn.ssm.service.Impl;
 import cn.ssm.dao.ResumeMapper;
 import cn.ssm.model.Recruit;
 import cn.ssm.model.Resume;
+import cn.ssm.model.User;
 import cn.ssm.service.ResumeService;
 import cn.ssm.util.BaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,15 @@ public class ResumeServiceImpl  extends BaseServiceImpl<Resume>  implements Resu
         return  this.resumeMapper.insert(resume);
     }
 
+
+    @Override
+    public List<User> getResListByUid(User user) {
+        return this.resumeMapper.getResListByUid(user);
+    }
+
+    @Override
+    public List<Resume> findRecruitResume(Long id) {
+        return resumeMapper.findRecruitResume(id);
+    }
 
 }
