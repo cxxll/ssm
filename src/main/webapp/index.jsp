@@ -177,7 +177,6 @@
             }
         }
         function checkCodeCallback(){ // 回调函数
-
             if (xmlHttp.readyState == 4){           // 数据返回完毕
                 if (xmlHttp.status == 200){         // HTTP操作正常
                     var text = xmlHttp.responseText;// 接收返回内容
@@ -205,7 +204,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <footer class="text-center">
-                <a href="addUser.jsp"><i class="fa fa-external-link"></i> 注册用户</a>
+                <a href="../addUser.jsp"><i class="fa fa-external-link"></i> 注册用户</a>
             </footer>
         </div>
         <div class="col-md-1"></div>

@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User>  implements UserService {
+public class  UserServiceImpl extends BaseServiceImpl<User>  implements UserService {
 
     @Autowired
     private UserMapper userMapper;
@@ -80,28 +80,28 @@ public class UserServiceImpl extends BaseServiceImpl<User>  implements UserServi
     }
 
     @Override
-    public Page<User> showProductsByPage(HttpServletRequest request, HttpServletResponse response) {
+    public Page<User> showUserByPage(HttpServletRequest request, HttpServletResponse response) {
 
             String pageNow = request.getParameter("pageNow");
 
             Page<User> page = null;
 
-            List<User> products = new ArrayList<User>();
+            List<User> users = new ArrayList<User>();
 
-            int totalCount =  userMapper.getProductsCount();
+            int totalCount =  userMapper.getUserCount();
 
             if (pageNow != null) {
                 page = new Page(totalCount, Integer.parseInt(pageNow));
-                products = this.userMapper.selectProductsByPage(page.getStartPos(), page.getPageSize());
+                users = this.userMapper.selectUserByPage(page.getStartPos(), page.getPageSize());
             } else {
                 page = new Page(totalCount, 1);
-                products = this.userMapper.selectProductsByPage(page.getStartPos(), page.getPageSize());
+                users = this.userMapper.selectUserByPage(page.getStartPos(), page.getPageSize());
             }
 
-            request.setAttribute("products", products);
+            request.setAttribute("user", users);
             request.setAttribute("page", page);
 
-            page.setRecordList(products);
+            page.setRecordList(users);
 
             return page;
 
@@ -110,6 +110,11 @@ public class UserServiceImpl extends BaseServiceImpl<User>  implements UserServi
     @Override
     public void batchInsert(List<User> userList) {
         userMapper.batchInsert(userList);
+    }
+
+    @Override
+    public List<Recruit> deletes(Long id) {
+        return  userMapper.deletes(id);
     }
 
 

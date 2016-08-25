@@ -36,6 +36,10 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>default</servlet-name>
+    <url-pattern>*.swf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
     <url-pattern>*.map</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
@@ -62,7 +66,14 @@
       <param-value>classpath*:spring-mvc.xml</param-value>
     </init-param>
   </servlet>
-
+  <!-- 防止spring内存溢出监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+  <!--修复数据  图片缓存清理-->
+  <listener>
+    <listener-class>cn.ssm.listener.CleanListener</listener-class>
+  </listener>
   <servlet-mapping>
     <servlet-name>spring</servlet-name>
     <!-- 1、.action访问以.action结尾的  由DispatcherServlet进行解析
@@ -70,6 +81,11 @@
      -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>
+      org.springframework.web.context.request.RequestContextListener
+    </listener-class>
+  </listener>
   <!-- 解决post乱码问题的过滤器 -->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>

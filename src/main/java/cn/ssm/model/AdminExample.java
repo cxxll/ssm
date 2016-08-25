@@ -393,6 +393,76 @@ public class AdminExample {
             addCriterion("admin_password not between", value1, value2, "adminPassword");
             return (Criteria) this;
         }
+
+        public Criteria andTextareaIsNull() {
+            addCriterion("textarea is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaIsNotNull() {
+            addCriterion("textarea is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaEqualTo(String value) {
+            addCriterion("textarea =", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaNotEqualTo(String value) {
+            addCriterion("textarea <>", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaGreaterThan(String value) {
+            addCriterion("textarea >", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaGreaterThanOrEqualTo(String value) {
+            addCriterion("textarea >=", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaLessThan(String value) {
+            addCriterion("textarea <", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaLessThanOrEqualTo(String value) {
+            addCriterion("textarea <=", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaLike(String value) {
+            addCriterion("textarea like", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaNotLike(String value) {
+            addCriterion("textarea not like", value, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaIn(List<String> values) {
+            addCriterion("textarea in", values, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaNotIn(List<String> values) {
+            addCriterion("textarea not in", values, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaBetween(String value1, String value2) {
+            addCriterion("textarea between", value1, value2, "textarea");
+            return (Criteria) this;
+        }
+
+        public Criteria andTextareaNotBetween(String value1, String value2) {
+            addCriterion("textarea not between", value1, value2, "textarea");
+            return (Criteria) this;
+        }
     }
 
     /**

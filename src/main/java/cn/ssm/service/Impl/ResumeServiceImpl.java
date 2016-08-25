@@ -32,7 +32,5 @@ public class ResumeServiceImpl  extends BaseServiceImpl<Resume>  implements Resu
         return  this.resumeMapper.insert(resume);
     }
 
-    public List<Resume> all(){
-        return  this.resumeMapper.all();
-    }
+
 }

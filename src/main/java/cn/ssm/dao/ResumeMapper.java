@@ -98,5 +98,4 @@ public interface ResumeMapper extends BaseMapper<Resume>{
 
     int updateResume(Resume resume);
 
-    List<Resume> all();
 }

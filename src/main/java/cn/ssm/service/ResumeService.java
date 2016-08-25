@@ -15,5 +15,4 @@ public interface ResumeService extends BaseService<Resume>{
 
     int add(Resume resume);
 
-    List<Resume> all();
 }

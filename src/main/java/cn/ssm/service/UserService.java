@@ -27,9 +27,10 @@ public interface UserService extends BaseService<User>{
       List<Recruit> findUser(Long id);
 
 
-     Page<User> showProductsByPage(HttpServletRequest request, HttpServletResponse response);
+     Page<User> showUserByPage(HttpServletRequest request, HttpServletResponse response);
 
 
      void batchInsert(List<User> userList);
 
+     List<Recruit> deletes(Long id);
 }

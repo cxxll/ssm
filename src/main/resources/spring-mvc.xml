@@ -16,13 +16,13 @@
 
     <!-- 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的 -->
     <!-- 指定自己定义的validator -->
-    <mvc:annotation-driven validator="validator"/>
+    <mvc:annotation-driven validator="validator" />
 
     <!-- 以下 validator ConversionService 在使用 mvc:annotation-driven 会 自动注册-->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
-        <!--如果不加默认到 使用classpath下的 ValidationMessages.properties
-        <property name="validationMessageSource" ref="messageSource"/>-->
+        <!--如果不加默认到 使用classpath下的 ValidationMessages.properties-->
+        <!--<property name="validationMessageSource" ref="messageSource"/>-->
     </bean>
 
     <!-- 国际化的消息资源文件（本系统中主要用于显示/错误消息定制）
@@ -75,25 +75,30 @@
         </property>
 
     </bean>
-    <!--&lt;!&ndash; 用户登陆拦截器 &ndash;&gt;-->
+    <!--<bean id="messageSource" class="org.springframework.context.MessageSource"/>-->
+    <mvc:default-servlet-handler />
+
     <!--<mvc:interceptors>-->
         <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/admin/user/**" />-->
-            <!--<bean class="aode.tb.interceptors.UserSessionInterceptor">-->
-                <!--&lt;!&ndash; 不需要session验证的地址 &ndash;&gt;-->
-                <!--<property name="excludeUrls">-->
-                    <!--<list>-->
-                        <!--<value>/admin/user/add</value>-->
-                        <!--<value>/admin/user/login</value>-->
-                    <!--</list>-->
-                <!--</property>-->
-                <!--&lt;!&ndash; 有权限限制的url &ndash;&gt;-->
-                <!--<property name="limitUrl">-->
-                    <!--<value>/admin/user/orders/add</value>-->
-                <!--</property>-->
-            <!--</bean>-->
+            <!--<mvc:mapping path="/admin/*"/> &lt;!&ndash; 管理员登录拦截 &ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/admin/login"/>-->
+            <!--<mvc:exclude-mapping path="/admin/add"/>-->
+            <!--<mvc:exclude-mapping path="/admin/first"/>-->
+            <!--<bean class="cn.ssm.interceptor.AdminSessionInterceptor"></bean>-->
         <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
-
+    <mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/user/*"/> <!-- 用户登录拦截 -->
+        <mvc:mapping path="/recruit/*"/>
+        <mvc:mapping path="/resume/*"/>
+    <mvc:exclude-mapping path="/user/login"/>
+    <mvc:exclude-mapping path="/user/add"/>
+        <mvc:exclude-mapping path="/user/delete"/>
+        <mvc:exclude-mapping path="/user/loginNameIsExist"/>
+        <mvc:exclude-mapping path="/user/showUser"/>
+        <bean class="cn.ssm.interceptor.UserSessionInterceptor"></bean>
+    </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

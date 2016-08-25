@@ -11,12 +11,12 @@
     <title>Title</title>
 </head>
 <body>
-<SCRIPT language=javascript>
-    function go()
-    {
-        window.history.go(-1);
-    }
-    setTimeout("go()",3000);
-</SCRIPT>
+<%--<SCRIPT language=javascript>--%>
+    <%--function go()--%>
+    <%--{--%>
+        <%--window.history.go(-1);--%>
+    <%--}--%>
+    <%--setTimeout("go()",3000);--%>
+<%--</SCRIPT>--%>
 </body>
 </html>

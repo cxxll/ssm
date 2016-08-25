@@ -113,15 +113,19 @@ public interface UserMapper extends BaseMapper<User>{
      * @param
      * @return startPos},#{pageSize}
      */
-    public List<User> selectProductsByPage(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize);
+    public List<User> selectUserByPage(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize);
 
     /**
      *
      * @param
      * @return
      */
-    public int getProductsCount();
+    public int getUserCount();
 
 
     void batchInsert(List<User> userList);
+
+    List<Recruit> deletes(Long id);
+
+
 }

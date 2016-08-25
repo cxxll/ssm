@@ -50,11 +50,6 @@
   id = #{id};
 </update>
 
-  <select id="all" resultMap="BaseResultMap" parameterType="cn.ssm.model.Resume">
-  SELECT
-  *
-  FROM
-  ssm_resume
-  </select>
+
 
 </mapper>

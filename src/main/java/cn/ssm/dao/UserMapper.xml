@@ -60,15 +60,17 @@
 </update>
 
   <!-- 分页SQL语句 -->
-  <select id="selectProductsByPage" resultMap="BaseResultMap"> select * from ssm_user limit #{startPos},#{pageSize} </select>
+  <select id="selectUserByPage" resultMap="BaseResultMap"> select * from ssm_user limit #{startPos},#{pageSize} </select>
 
   <!-- 取得记录的总数 -->
-  <select id="getProductsCount" resultType="int"> SELECT COUNT(*) FROM ssm_user </select>
+  <select id="getUserCount" resultType="int"> SELECT COUNT(*) FROM ssm_user </select>
 
-  <!-- 执行批量导入操作 -->
-  <insert id="batchInsert" parameterType="ArrayList">
-  INSERT INTO ssm_user( id, loginName, password)
-  <foreach separator="union all" index="index" item="item" collection="list"> SELECT #{item.id, jdbcType=BIGINT}, #{item.loginName, jdbcType=VARCHAR}, #{item.password, jdbcType=VARCHAR} FROM DUAL </foreach>
+  <delete id ="deletes" parameterType = "java.lang.Long">
 
-</insert>
+       DELETE from ssm_recruit where tId in
+    <foreach collection="list" item = "user" open="(" separator="," close=")">#{ user.id}
+
+    </foreach>
+  </delete>
+
 </mapper>

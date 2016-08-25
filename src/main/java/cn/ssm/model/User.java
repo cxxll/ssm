@@ -1,9 +1,13 @@
 package cn.ssm.model;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Table(name = "ssm_user")
@@ -23,7 +27,6 @@ public class User {
      *
      * @mbggenerated
      */
-    @NotNull
     private String loginName;
 
     /**
@@ -32,7 +35,6 @@ public class User {
      *
      * @mbggenerated
      */
-    @NotNull
     private String password;
 
     /**
@@ -41,6 +43,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @Email(message="{email.format.error}")
     private String email;
 
     /**
@@ -49,6 +52,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @NotNull(message = "性别不能为空")
     private String gender;
 
     /**
@@ -57,6 +61,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @NotNull(message = "名字不能为空")
     private String name;
 
     /**
@@ -65,6 +70,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @Pattern(regexp="^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$", message="手机号格式不正确")
     private String phoneNumber;
 
     /**
@@ -73,6 +79,7 @@ public class User {
      *
      * @mbggenerated
      */
+    @Min(value=18,message="必须年满18岁！")
     private String age;
 
     /**
@@ -102,6 +109,19 @@ public class User {
         this.age = age;
         this.recruits = recruits;
     }
+
+    public User(Long id, String loginName, String password, String email, String gender, String name, String phoneNumber, String age) {
+        this.id = id;
+        this.loginName = loginName;
+        this.password = password;
+        this.email = email;
+        this.gender = gender;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+    }
+
+
 
     public Long getId() {
         return id;

@@ -1,12 +1,10 @@
 package cn.ssm.util;
 
-import java.io.Serializable;
-import java.util.List;
+        import java.io.Serializable;
+        import java.util.ArrayList;
+        import java.util.List;
 
-/**
- * Created by Administrator on 2016/8/17.
- */
-public class Page<T> implements Serializable {
+public class Page<T> implements Serializable{
 
     private static final long serialVersionUID = 1477094883768867435L;
 
@@ -33,9 +31,7 @@ public class Page<T> implements Serializable {
     @SuppressWarnings("unused")
     private boolean hasLast;// 是否有最后一页
 
-    /**
-     * 当前页中存放的返回结果列表
-     */
+    /** 当前页中存放的返回结果列表 */
     private List<T> recordList;
 
     private String url;
@@ -51,7 +47,6 @@ public class Page<T> implements Serializable {
 
     /**
      * 通过构造函数 传入  总记录数  和  当前页
-     *
      * @param totalCount
      * @param pageNow
      */
@@ -62,7 +57,6 @@ public class Page<T> implements Serializable {
 
     /**
      * 取得总页数，总页数=总记录数/总页数
-     *
      * @return
      */
     public int getTotalPageCount() {
@@ -98,10 +92,8 @@ public class Page<T> implements Serializable {
     public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
     }
-
     /**
      * 取得选择记录的初始位置
-     *
      * @return
      */
     public int getStartPos() {
@@ -114,7 +106,6 @@ public class Page<T> implements Serializable {
 
     /**
      * 是否是第一页
-     *
      * @return
      */
     public boolean isHasFirst() {
@@ -124,10 +115,8 @@ public class Page<T> implements Serializable {
     public void setHasFirst(boolean hasFirst) {
         this.hasFirst = hasFirst;
     }
-
     /**
      * 是否有首页
-     *
      * @return
      */
     public boolean isHasPre() {
@@ -138,10 +127,8 @@ public class Page<T> implements Serializable {
     public void setHasPre(boolean hasPre) {
         this.hasPre = hasPre;
     }
-
     /**
      * 是否有下一页
-     *
      * @return
      */
     public boolean isHasNext() {
@@ -152,10 +139,8 @@ public class Page<T> implements Serializable {
     public void setHasNext(boolean hasNext) {
         this.hasNext = hasNext;
     }
-
     /**
      * 是否有尾页
-     *
      * @return
      */
     public boolean isHasLast() {
@@ -174,4 +159,6 @@ public class Page<T> implements Serializable {
     public void setRecordList(List<T> recordList) {
         this.recordList = recordList;
     }
+
+
 }
