@@ -73,7 +73,7 @@
                     <li><a href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath }/file/selectTitleByPage">公告栏</a>
+                        <a href="${pageContext.request.contextPath }/file/selectTitleByPage"><i class="fa fa-gear fa-fw"></i> 公告栏</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath}/user/loginout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
@@ -101,7 +101,7 @@
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/resume/getResListByUid?id=${loginUser.id}"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历中心<span class="fa arrow"></span></a>
+                        <a href="${pageContext.request.contextPath}/resume/getResListByUid?id=${loginUser.id}"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历中心</a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/recruit/getRecListByUid?id=${loginUser.id}"><i class="fa fa-table fa-fw"></i> 招聘页</a>
@@ -119,6 +119,9 @@
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath }/file/selectTitleByPage">公告栏</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath}/user/loginout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
