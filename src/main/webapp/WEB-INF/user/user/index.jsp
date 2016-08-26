@@ -102,13 +102,13 @@
                         <a href="#"><i class="fa fa-files-o fa-fw"></i> 个人信息<span class="fa arrow"></span></a>
                         <ul class="nav nav-fourth-level">
                             <li>
-                            <li><a href="${pageContext.request.contextPath}/user/theme"><i class="fa fa-user fa-fw"></i> 首页</a>
+                            <li><a class="active" href="${pageContext.request.contextPath}/user/theme"><i class="fa fa-user fa-fw"></i> 首页</a>
                             </li>
                             <li>
-                                <a class="active" href="${pageContext.request.contextPath}/user/updateUI?id=${loginUser.id}">修改信息</a>
+                                <a  href="${pageContext.request.contextPath}/user/updateUI?id=${loginUser.id}">修改信息</a>
                             </li>
                             <li>
-                                <a class="active" href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}">修改密码</a>
+                                <a  href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}">修改密码</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/file/selectTitleByPage">公告栏</a>

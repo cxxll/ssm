@@ -57,7 +57,7 @@ public class UserController extends BaseUserController<User, Long> {
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(@Valid User user , BindingResult result, HttpSession session , HttpServletRequest request , HttpServletResponse response) throws IOException {
+    public String login(@Valid User user , HttpSession session , HttpServletRequest request , HttpServletResponse response) throws IOException {
         try {
             User loginUsers = this.userService.login(user);
             if(loginUsers != null){
@@ -99,6 +99,9 @@ public class UserController extends BaseUserController<User, Long> {
 
     @RequestMapping("add")
     public String add(@Valid User user , BindingResult result) {
+        if(result.hasErrors()){
+            return "addUser";
+        }
         this.userService.add(user);
         return "index";
 
@@ -112,8 +115,11 @@ public class UserController extends BaseUserController<User, Long> {
 
 
     @RequestMapping("update")
-    public String update(User user ,HttpSession session) {
+    public String update(@Valid User user , BindingResult result ,HttpSession session) {
             try {
+                if(result.hasErrors()){
+                    return TEMPLATE_PATH +"updateUI";
+                }
                 this.userService.updateUser(user);
                 Long ids =  user.getId();
                 User loginUsers =  this.userService.selectByPrimaryKey(ids);

@@ -83,7 +83,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/file/UserPage"><i class="fa fa-wrench"></i> 用户页</a></li>
-                <li class="active"><a href="${pageContext.request.contextPath}/admin/themes"><i class="fa fa-file"></i> 公告添加页</a></li>
+                <li ><a href="${pageContext.request.contextPath}/admin/themes"><i class="fa fa-file"></i> 公告添加页</a></li>
                 <li ><a href="${pageContext.request.contextPath}/board/selectTitleByPage"><i class="fa fa-file"></i> 显示公告页</a></li>
                 <li ><a href="${pageContext.request.contextPath}/admin/logout"><i class="fa fa-file"></i> 注销</a></li>
             </ul>
@@ -147,38 +147,8 @@
                                             </tbody>
                                         </table>
                                     </div>
-                    <div align="center">
-                        <font size="2">共 ${page.totalPageCount} 页</font>
-                        <font size="2">第
-                            ${page.pageNow} 页</font> <a href="${url}?pageNow=1">首页</a>
-                        <c:choose>
-                            <c:when test="${page.pageNow - 1 > 0}">
-                                <a href="${url}?pageNow=${page.pageNow - 1}">上一页</a>
-                            </c:when>
-                            <c:when test="${page.pageNow - 1 <= 0}">
-                                <a href="${url}?pageNow=1">上一页</a>
-                            </c:when>
-                        </c:choose>
-                        <c:choose>
-                            <c:when test="${page.totalPageCount==0}">
-                                <a href="${url}?pageNow=${page.pageNow}">下一页</a>
-                            </c:when>
-                            <c:when test="${page.pageNow + 1 < page.totalPageCount}">
-                                <a href="${url}?pageNow=${page.pageNow + 1}">下一页</a>
-                            </c:when>
-                            <c:when test="${page.pageNow + 1 >= page.totalPageCount}">
-                                <a href="${url}?pageNow=${page.totalPageCount}">下一页</a>
-                            </c:when>
-                        </c:choose>
-                        <c:choose>
-                            <c:when test="${page.totalPageCount==0}">
-                                <a href="${url}?pageNow=${page.pageNow}">尾页</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="${url}?pageNow=${page.totalPageCount}">尾页</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
+                    <%@ include file="/resources/admin/common.jspf" %>
+
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->

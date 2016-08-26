@@ -1,6 +1,7 @@
 package cn.ssm.model;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -27,6 +28,7 @@ public class User {
      *
      * @mbggenerated
      */
+
     private String loginName;
 
     /**
@@ -61,7 +63,7 @@ public class User {
      *
      * @mbggenerated
      */
-    @NotNull(message = "名字不能为空")
+    @Length(min= 4,max= 8,message = "名字不能为空")
     private String name;
 
     /**
