@@ -134,7 +134,7 @@
                     <br/>
                     <c:forEach items="${pageList.recordList }" var="title">
                         <h5><br/>
-                        <a href="${pageContext.request.contextPath}/admin/showBoard?id=${title.id} ">${title.title}</a>
+                        <a href="${pageContext.request.contextPath}/board/showBoard?id=${title.id} ">${title.title}</a>
                         </h5><br/>
                     </c:forEach>
 

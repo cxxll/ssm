@@ -20,11 +20,11 @@ public class ResumeController extends BaseResumeController<Resume, Long> {
     @Autowired
     private ResumeService resumeService;
 
-    @RequestMapping(value = "/list")
-    public String list(Model model) {
-        model.addAttribute("resumes",this.resumeService.selectAll());
-        return TEMPLATE_PATH +"list";
-    }
+//    @RequestMapping(value = "/list")
+//    public String list(Model model) {
+//        model.addAttribute("resumes",this.resumeService.selectAll());
+//        return TEMPLATE_PATH +"list";
+//    }
 
     @RequestMapping(value = "/listA")
     public String listA() {

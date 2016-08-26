@@ -132,7 +132,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">欢迎${loginUser.name}的到来</h1>
-                    <a href="${pageContext.request.contextPath}/file/download.do?fileName=123.txt">用户须知 </a><br />
+                    <a href="${pageContext.request.contextPath}/file/download.do?fileName=用户须知.txt">用户须知 </a><br />
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

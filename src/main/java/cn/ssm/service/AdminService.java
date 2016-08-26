@@ -16,9 +16,5 @@ public interface AdminService extends BaseService<Admin>{
 
     int add(Admin admin) ;
 
-    void updateEditor(Long id,String title ,String textarea);
 
-    Admin showBoard(Long id);
-
-    Page<Admin> selectTitleByPage(HttpServletRequest request, HttpServletResponse response);
 }

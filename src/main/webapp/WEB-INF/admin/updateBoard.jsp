@@ -20,7 +20,7 @@
         var editor = null;
         window.onload = function(){
             editor = CKEDITOR.replace('textarea'); //参数‘content’是textarea元素的name属性值，而非id属性值
-            editor.setData('输入值来创建公告');
+            editor.setData('${Boards.textarea}');
             editor.getData();
         }
     </script>
@@ -73,15 +73,15 @@
             </ul>
 
 
-    </div><!-- /#page-wrapper -->
-</nav>
+        </div><!-- /#page-wrapper -->
+    </nav>
 
-    <form action="${pageContext.request.contextPath}/board/add"  method="post">
+    <form action="${pageContext.request.contextPath}/board/updateEditor?id=${Boards.id}"  method="post">
         <div  style="text-align:center">
-            <h1> 公告名: <input name="title" id="title" type="text"></h1>
+            <h1> 公告名: <input name="title" id="title" type="text" value="${Boards.title}"></h1>
         </div>
 
-        <textarea id="textarea" name="textarea">公告内容</textarea>
+        <textarea id="textarea" name="textarea" value="${Boards.textarea}">公告内容</textarea>
         <input type="submit" value="提交" id="submit" onclick="submit()" />
     </form>
 </div><!-- /#wrapper -->

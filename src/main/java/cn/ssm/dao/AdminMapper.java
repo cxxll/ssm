@@ -98,16 +98,5 @@ public interface AdminMapper extends BaseMapper<Admin>{
 
     Admin loginAdmin(Admin admin);
 
-    void updateEditor(@Param("id") Long id, @Param("title") String title,@Param("textarea") String  textarea);
 
-    Admin showBoard( Long id);
-
-    public List<Admin> selectTitleByPage(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize);
-
-    /**
-     *
-     * @param
-     * @return
-     */
-    public int getTitleCount();
 }

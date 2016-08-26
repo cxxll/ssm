@@ -116,19 +116,6 @@ public class AdminController extends BaseAdminController<Admin, String> {
         return responseStr;
     }
 
-    @RequestMapping("updateEditor")
-    public String updateEditor(Long id ,String title ,String textarea){
-        this.adminServices.updateEditor(id ,title ,textarea);
-        return  TEMPLATE_PATH + "indexs";
-    }
-
-    @RequestMapping("showBoard")
-    public String showBoard(Long id ,HttpServletRequest request){
-       Admin admin = this.adminServices.showBoard(id);
-        request.setAttribute("Board" , admin);
-        return   "/Boards";
-    }
-
 
 }
 

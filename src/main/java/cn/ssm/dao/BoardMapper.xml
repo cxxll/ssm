@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ssm.dao.BoardMapper" >
+  <resultMap id="BaseResultMap" type="cn.ssm.model.Board" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="textarea" property="textarea" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <update id="updateEditor" parameterType="java.lang.String">
+    UPDATE
+    ssm_board
+    <set>
+      <if test="title != null"> title = #{title} </if>  ,
+      <if test="textarea != null"> textarea = #{textarea} </if>
+
+    </set>
+    WHERE id = #{id}
+
+  </update>
+
+  <select id="showBoard" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT
+    title, textarea,id
+    FROM
+    ssm_board
+    WHERE
+    id = #{id}
+  </select>
+
+  <!-- 分页SQL语句 -->
+  <select id="selectTitleByPage" resultMap="BaseResultMap"> select id ,title from ssm_board limit #{startPos},#{pageSize} </select>
+
+  <!-- 取得记录的总数 -->
+  <select id="getTitleCount" resultType="int"> SELECT COUNT(*) FROM ssm_board </select>
+
+</mapper>

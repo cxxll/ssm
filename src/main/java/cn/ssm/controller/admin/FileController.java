@@ -1,8 +1,10 @@
 package cn.ssm.controller.admin;
 
 import cn.ssm.model.Admin;
+import cn.ssm.model.Board;
 import cn.ssm.model.User;
 import cn.ssm.service.AdminService;
+import cn.ssm.service.BoardService;
 import cn.ssm.service.UserService;
 import cn.ssm.util.ExportExcelUtil;
 import cn.ssm.util.ImportExcelUtil;
@@ -38,7 +40,7 @@ public class FileController {
     private UserService userService;
 
     @Autowired
-    private AdminService adminService;
+    private BoardService boardService;
     //
 //    @RequestMapping("/write.html")
 //    @ResponseBody
@@ -314,7 +316,6 @@ public class FileController {
     }
 
     @RequestMapping("/upload.do")
-    @ResponseBody
     public String upload(HttpServletRequest request,
                          HttpServletResponse response) throws IOException {
         // 这里我用到了jar包
@@ -345,7 +346,7 @@ public class FileController {
             }
 
         }
-        return "uploadSuccess";
+        return "/WEB-INF/user/user/index";
 
     }
     @RequestMapping("/toUpload.do")
@@ -391,9 +392,10 @@ public class FileController {
     @RequestMapping("/selectTitleByPage")
     public String selectTitleByPage(HttpServletRequest request, HttpServletResponse response) {
 
-        Page<Admin> pageList = null;
+        Page<Board> pageList = null;
 
-        pageList  = adminService.selectTitleByPage(request, response);
+
+        pageList  = boardService.selectTitleByPage(request, response);
 
         request.setAttribute("pageList", pageList);
 

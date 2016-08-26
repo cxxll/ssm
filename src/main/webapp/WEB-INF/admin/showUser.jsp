@@ -83,7 +83,8 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/file/UserPage"><i class="fa fa-wrench"></i> 用户页</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/themes"><i class="fa fa-file"></i> 个人页面</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/admin/themes"><i class="fa fa-file"></i> 公告添加页</a></li>
+                <li ><a href="${pageContext.request.contextPath}/board/selectTitleByPage"><i class="fa fa-file"></i> 显示公告页</a></li>
                 <li ><a href="${pageContext.request.contextPath}/admin/logout"><i class="fa fa-file"></i> 注销</a></li>
             </ul>
 

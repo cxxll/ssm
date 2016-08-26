@@ -6,22 +6,9 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="admin_user" jdbcType="VARCHAR" property="adminUser" />
     <result column="admin_password" jdbcType="VARCHAR" property="adminPassword" />
-      <result column="title" jdbcType="VARCHAR" property="title" />
-      <result column="textarea" jdbcType="VARCHAR" property="textarea" />
   </resultMap>
 
-  <update id="updateAdmin" parameterType="cn.ssm.model.Admin">
-  UPDATE ssm_admin
 
-  SET
-   admin_user = #{adminUser},
-
-  admin_password = #{adminPassword},
-
-
-  WHERE
-  id = #{id};
-</update>
 
   <select id="loginAdmin" parameterType="cn.ssm.model.Admin" resultMap="BaseResultMap">
  SELECT
@@ -32,31 +19,5 @@
   admin_user = #{adminUser} AND admin_password = #{adminPassword}
   </select>
 
-    <update id="updateEditor" parameterType="java.lang.String">
-        UPDATE
-        ssm_admin
-        <set>
-            <if test="title != null"> title = #{title} </if>  ,
-            <if test="textarea != null"> textarea = #{textarea} </if>
-
-        </set>
-        WHERE id = #{id}
-
-</update>
-
-    <select id="showBoard" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        SELECT
-       title, textarea
-       FROM
-        ssm_admin
-        WHERE
-      id = #{id}
-    </select>
-
-    <!-- 分页SQL语句 -->
-    <select id="selectTitleByPage" resultMap="BaseResultMap"> select id ,title from ssm_admin limit #{startPos},#{pageSize} </select>
-
-    <!-- 取得记录的总数 -->
-    <select id="getTitleCount" resultType="int"> SELECT COUNT(*) FROM ssm_admin </select>
 
 </mapper>

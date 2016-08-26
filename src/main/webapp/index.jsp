@@ -204,7 +204,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <footer class="text-center">
-                <a href="../addUser.jsp"><i class="fa fa-external-link"></i> 注册用户</a>
+                <a href="${pageContext.request.contextPath }/addUser.jsp"><i class="fa fa-external-link"></i> 注册用户</a>
             </footer>
         </div>
         <div class="col-md-1"></div>
