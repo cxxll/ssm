@@ -1,8 +1,13 @@
 package cn.ssm.model;
 
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Table(name="ssm_resume")
@@ -22,8 +27,9 @@ public class Resume {
      *
      * @mbggenerated
      */
-
+    @NotEmpty(message = "不能为空")
     private  String title;
+    @NotEmpty(message = "不能为空")
     private String jobCategory;
 
     /**
@@ -32,6 +38,7 @@ public class Resume {
      *
      * @mbggenerated
      */
+    @NotEmpty(message = "不能为空")
     private String workPlace;
 
     /**
@@ -48,6 +55,7 @@ public class Resume {
      *
      * @mbggenerated
      */
+    @NotEmpty(message = "不能为空")
     private String name;
 
     /**
@@ -64,6 +72,7 @@ public class Resume {
      *
      * @mbggenerated
      */
+    @NotEmpty(message = "不能为空")
     private String workingLife;
 
     /**
@@ -72,6 +81,7 @@ public class Resume {
      *
      * @mbggenerated
      */
+    @NotEmpty(message = "不能为空")
     private String highestDegree;
 
     /**
@@ -80,8 +90,8 @@ public class Resume {
      *
      * @mbggenerated
      */
+    @Pattern(regexp="^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$", message="手机号格式不正确")
     private String phoneNumber;
-
     private Long uId;
 
     @Transient

@@ -100,7 +100,7 @@ public class AdminController extends BaseAdminController<Admin, String> {
         }
         String fileName = null;
         for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
-// 上传文件
+        // 上传文件
             MultipartFile mf = entity.getValue();
             fileName = mf.getOriginalFilename();//获取原文件名
             System.out.println("filename="+fileName);

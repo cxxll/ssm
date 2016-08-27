@@ -2,6 +2,7 @@ package cn.ssm.model;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -45,7 +46,7 @@ public class User {
      *
      * @mbggenerated
      */
-    @Email(message="{email.format.error}")
+    @Email(message="{email格式错误}")
     private String email;
 
     /**
@@ -54,7 +55,6 @@ public class User {
      *
      * @mbggenerated
      */
-    @NotNull(message = "性别不能为空")
     private String gender;
 
     /**
@@ -63,7 +63,7 @@ public class User {
      *
      * @mbggenerated
      */
-    @Length(min= 4,max= 8,message = "名字不能为空")
+    @Length(min= 2,max= 4,message = "名字必须在2个中文字到4个中文字")
     private String name;
 
     /**
@@ -320,6 +320,14 @@ public class User {
 
     public void setRecruits(List<Recruit> recruits) {
         this.recruits = recruits;
+    }
+
+    public List<Resume> getResumes() {
+        return resumes;
+    }
+
+    public void setResumes(List<Resume> resumes) {
+        this.resumes = resumes;
     }
 
     @Override

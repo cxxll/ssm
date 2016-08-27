@@ -6,8 +6,11 @@ import cn.ssm.service.RecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -38,9 +41,16 @@ public class RecruitController extends BaseRecruitController<Recruit , Long> {
     }
 
     @RequestMapping("update")
-    public String updateRecruit(Recruit recruit) {
+    public String updateRecruit(@Valid  Recruit recruit , BindingResult result ,Long id,Model model) {
+        if(result.hasErrors()){
+            List<ObjectError> ls=result.getAllErrors();
+            for (int i = 0; i < ls.size(); i++) {
+                System.out.println("error:"+ls.get(i));
+            }
+            model.addAttribute("rec",this.recruitService.selectByPrimaryKey(id));
+            return TEMPLATE_PATH +"updateRec";
+        }
         this.recruitService.updateRecruit(recruit);
-        Long id =recruit.getId();
         return "redirect:/recruit/updateRec?id=" +id;
 
     }
@@ -66,7 +76,14 @@ public class RecruitController extends BaseRecruitController<Recruit , Long> {
 
 
     @RequestMapping("add")
-    public String add(Recruit recruit) {
+    public String add(@Valid Recruit recruit , BindingResult result) {
+        if(result.hasErrors()){
+            List<ObjectError> ls=result.getAllErrors();
+            for (int i = 0; i < ls.size(); i++) {
+                System.out.println("error:"+ls.get(i));
+            }
+            return TEMPLATE_PATH +"addRecruit";
+        }
         this.recruitService.add(recruit);
         Long id = recruit.getuId();
         return "redirect:/recruit/getRecListByUid?id=" +id;

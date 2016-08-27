@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -120,9 +121,11 @@
                     <span class="fa fa-quote-left "></span> 登录 <span class="fa fa-quote-right "></span>
                 </h2>
                 <div>
-                    <input id="loginName" type="text"  name="loginName" placeholder="登录账号" onkeypress="check_values();">
-                    <input id="password" type="password" name="password" placeholder="输入密码" onkeypress="check_values();">
-                        <input type="text" id="code" name="code" placeholder="输入验证码" onblur="return checkCode(this.value)" onkeypress="check_values();"/>
+                    <input id="loginName" type="text" path="loginName" name="loginName" placeholder="登录账号" onkeypress="check_values();">
+                    <form:errors path="loginName" cssClass="errorClass"></form:errors>
+                    <input id="password" type="password" path="password" name="password" placeholder="输入密码" onkeypress="check_values();">
+                    <form:errors path="password" cssClass="errorClass"></form:errors>
+                    <input type="text" id="code" name="code" placeholder="输入验证码" onblur="return checkCode(this.value)" onkeypress="check_values();"/>
                     <div>
                     <img id="codeImg"  src="${pageContext.request.contextPath}/users/code" onclick="changeValidateCode(this)();"/>
                         <span id="myDiv"></span>

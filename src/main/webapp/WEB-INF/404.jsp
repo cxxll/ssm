@@ -11,12 +11,15 @@
     <title>Title</title>
 </head>
 <body>
-<%--<SCRIPT language=javascript>--%>
-    <%--function go()--%>
-    <%--{--%>
-        <%--window.history.go(-1);--%>
-    <%--}--%>
-    <%--setTimeout("go()",3000);--%>
-<%--</SCRIPT>--%>
+<div style="text-align: center;">
+    别紧张   5秒后返回
+</div>
+<SCRIPT language=javascript>
+    function go()
+    {
+        window.history.go(-1);
+    }
+    setTimeout("go()",5000);
+</SCRIPT>
 </body>
 </html>

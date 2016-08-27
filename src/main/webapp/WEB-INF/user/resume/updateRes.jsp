@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -146,16 +147,23 @@
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3">
                                     <div class="form-group">
+                                        <input type="hidden" name="id" value="id" id="id">
                                         <label for="title">标题</label>
-                                        <input class="form-control" id="title" name="title" type="text" value="${res.title}">
+                                        <input class="form-control" id="title" name="title" type="text" value="${res.title}" path="title">
+                                        <form:errors path="title" cssClass="errorClass"></form:errors>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="jobCategory">职位类别</label>
-                                        <input class="form-control"  id="jobCategory" name="jobCategory" type="text" value="${res.jobCategory}">
+                                        <input class="form-control"  id="jobCategory" name="jobCategory" type="text" value="${res.jobCategory}" path="jobCategory">
+                                        <form:errors path="jobCategory" cssClass="errorClass"></form:errors>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="workPlace">工作地点</label>
-                                        <input class="form-control"  id="workPlace" name="workPlace" type="text"value="${res.workPlace}" >
+                                        <input class="form-control"  id="workPlace" name="workPlace" type="text"value="${res.workPlace}" path="workPlace">
+                                        <form:errors path="workPlace" cssClass="errorClass"></form:errors>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="salaryExpectation">期望薪资</label>
@@ -163,20 +171,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">姓名</label>
-                                        <input class="form-control"  id="name" name="name" type="text" value="${res.name}">
+                                        <input class="form-control"  id="name" name="name" type="text" value="${res.name}" path="name">
+                                        <form:errors path="name" cssClass="errorClass"></form:errors>
+
                                     </div>
 
                                     <div class="form-group">
                                         <label for="workingLife">工作年限</label>
-                                        <input class="form-control"  id="workingLife" name="workingLife" type="text" value="${res.workingLife}">
+                                        <input class="form-control"  id="workingLife" name="workingLife" type="text" value="${res.workingLife}" path="workingLife">
+                                        <form:errors path="workingLife" cssClass="errorClass"></form:errors>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="highestDegree">学历</label>
-                                        <input class="form-control"  id="highestDegree" name="highestDegree" type="text" value="${res.highestDegree}">
+                                        <input class="form-control"  id="highestDegree" name="highestDegree" type="text" value="${res.highestDegree}" path="highestDegree">
+                                        <form:errors path="highestDegree" cssClass="errorClass"></form:errors>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="phoneNumber">电话号码</label>
-                                        <input class="form-control"  id="phoneNumber" name="phoneNumber" type="text" value="${res.phoneNumber}">
+                                        <input class="form-control"  id="phoneNumber" name="phoneNumber" type="text" value="${res.phoneNumber}" path="phoneNumber">
+                                        <form:errors path="phoneNumber" cssClass="errorClass"></form:errors>
                                     </div>
                                     <div class="form-group">
                                         <label for="submit">提交</label>

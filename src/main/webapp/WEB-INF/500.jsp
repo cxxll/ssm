@@ -11,15 +11,18 @@
     <title>Title</title>
 </head>
 <body>
-错误码： <%=request.getAttribute("javax.servlet.error.status_code")%> <br>
-	     信息： <%=request.getAttribute("javax.servlet.error.message")%> <br>
-	     异常： <%=request.getAttribute("javax.servlet.error.exception_type")%> <br>
+<div style="text-align: center;">
+    别紧张   5秒后返回
+</div>
+<%--错误码： <%=request.getAttribute("javax.servlet.error.status_code")%> <br>--%>
+	     <%--信息： <%=request.getAttribute("javax.servlet.error.message")%> <br>--%>
+	     <%--异常： <%=request.getAttribute("javax.servlet.error.exception_type")%> <br>--%>
 <SCRIPT language=javascript>
     function go()
     {
         window.history.go(-1);
     }
-    setTimeout("go()",3000);
+    setTimeout("go()",5000);
 </SCRIPT>
 </body>
 </html>

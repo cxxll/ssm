@@ -109,7 +109,7 @@ public class ExcelController {
         //调用ExportExcel构建一张Excel表
         ExportExcel<User> ee = new ExportExcel<User>();
         response.setContentType("octets/stream");
-        response.addHeader("Content-Disposition","attachment;filename=users.xlsx");
+        response.addHeader("Content-Disposition","attachment;filename=users.xls");
         String[] headers = { "id", "登录账号", "登录密码", "邮箱","性别", "姓名","电话号码" ,"年龄"};
         //存储每一行的表中数据
         List<User> dataset = new ArrayList<User>();

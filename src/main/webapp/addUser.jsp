@@ -145,7 +145,7 @@
                             <div class="form-bottom">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-login-name">登录账号</label>
-                                    <input type="text" name="loginName" placeholder="登录账号" class="form-login-name form-control" id="form-login-name"
+                                    <input type="text" name="loginName" placeholder="登录账号" class="form-login-name form-control" path="loginName" id="form-login-name"
                                            onblur="checkloginName(this.value)">
                                     <span id="msg"></span>
                                 </div>

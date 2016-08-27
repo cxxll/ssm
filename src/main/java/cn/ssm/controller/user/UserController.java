@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,7 +58,7 @@ public class UserController extends BaseUserController<User, Long> {
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(@Valid User user , HttpSession session , HttpServletRequest request , HttpServletResponse response) throws IOException {
+    public String login(@Valid User user , BindingResult result , HttpSession session , HttpServletRequest request , HttpServletResponse response) throws IOException {
         try {
             User loginUsers = this.userService.login(user);
             if(loginUsers != null){
@@ -100,6 +101,10 @@ public class UserController extends BaseUserController<User, Long> {
     @RequestMapping("add")
     public String add(@Valid User user , BindingResult result) {
         if(result.hasErrors()){
+            List<ObjectError> ls=result.getAllErrors();
+            for (int i = 0; i < ls.size(); i++) {
+                System.out.println("error:"+ls.get(i));
+            }
             return "addUser";
         }
         this.userService.add(user);
@@ -118,7 +123,11 @@ public class UserController extends BaseUserController<User, Long> {
     public String update(@Valid User user , BindingResult result ,HttpSession session) {
             try {
                 if(result.hasErrors()){
-                    return TEMPLATE_PATH +"updateUI";
+                    List<ObjectError> ls=result.getAllErrors();
+                    for (int i = 0; i < ls.size(); i++) {
+                        System.out.println("error:"+ls.get(i));
+                    }
+                    return "redirect:/user/updateUI?id=" + user.getId();
                 }
                 this.userService.updateUser(user);
                 Long ids =  user.getId();
