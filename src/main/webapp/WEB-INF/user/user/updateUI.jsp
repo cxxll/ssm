@@ -30,7 +30,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/validata/js/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/validata/js/jquery.vform.js"></script>
 </head>
 
 <body>
@@ -132,7 +133,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="${pageContext.request.contextPath}/user/update?id=${loginUser.id}"  method="post">
+                    <form action="${pageContext.request.contextPath}/user/update?id=${loginUser.id}"  method="post" id="updateUI" >
                         <fieldset>
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3">
@@ -141,7 +142,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">姓名</label>
-                                        <input class="form-control" id="name" name="name" type="text" value="${loginUser.name}">
+                                        <input class="form-control" id="name" name="name" type="text" value="${loginUser.name}" validata-options="validType:'Require|Chinese',msg:'不能为空|真实姓名只允许中文,并且大于两个字'">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">邮箱</label>
@@ -158,12 +159,17 @@
                                     <div class="form-group">
                                         <label for="submit">提交</label>
                                         <input class="form-control"  id="submit"  type="submit" >
-
                                     </div>
+
                             </div>
+
                                 </div>
                         </fieldset>
+                        <script>
+                            $('#updateUI').checkForm();
+                        </script>
                     </form>
+
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

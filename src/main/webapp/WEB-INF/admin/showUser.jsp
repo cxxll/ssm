@@ -23,24 +23,16 @@
     <!-- Add custom CSS here -->
     <link href="${pageContext.request.contextPath}/resources/admin/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/font-awesome.min.css">
-<script>
-    function deleteDraft(the,id){
-    $.messager.confirm('删除草稿提醒', '</br>确定删除这篇草稿吗?</br></br>',function(r){
-    if(r){
-    $.ajax({
-    type : "post",
-    url : "http://localhost:8090/webplus3/_web/sns/delBlog.do?_p=YXM9Mw__&id=" + id,
-    success : function(data) {
-    if(data == "success") {
-    $(the).parents("li").remove();
-    parent.initDraft();
-    }
-    }
-    });
-    }
-    });
-    }
-</script>
+    <script type="text/javascript">
+        function del() {
+            var msg = "您真的确定要删除吗？\n\n请确认！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
     <script type="text/javascript" src="resources/upload/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="resources/upload/jquery.form.js"></script>
 
@@ -140,7 +132,7 @@
                                                     <td>${user.name}</td>
                                                     <td>${user.phoneNumber}</td>
                                                     <td>${user.age}</td>
-                                                    <td><a href="${pageContext.request.contextPath}/user/delete?id=${user.id}">删除</a></td>
+                                                    <td><a href="${pageContext.request.contextPath}/user/delete?id=${user.id}" onClick="return del()" >删除</a></td>
                                                 </tr>
                                             </c:forEach>
 

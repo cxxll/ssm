@@ -118,13 +118,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1><strong>Bootstrap</strong> Multi Step Registration Form</h1>
-                    <div class="description">
-                        <p>
-                            This is a free responsive multi-step registration form made with Bootstrap.
-                            Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
-                        </p>
-                    </div>
+                    <h1><strong>注册页面</strong> 请输入完成后点下一页</h1>
+
                 </div>
             </div>
             <div class="row">
@@ -154,7 +149,7 @@
                                     <input type="password" name="password" placeholder="登录密码" class="form-password form-control" id="form-password">
                                 </div>
 
-                                <button type="button" class="btn btn-next">Next</button>
+                                <button type="button" class="btn btn-next">下一页</button>
                             </div>
                         </fieldset>
 
@@ -185,8 +180,8 @@
                                     <input type="text" name="name" placeholder="真实姓名" class="form-name form-control" id="form-name"
                                            validata-options="validType:'Require|Chinese',msg:'不能为空|真实姓名只允许中文,并且大于两个字'">
                                 </div>
-                                <button type="button" class="btn btn-previous">Previous</button>
-                                <button type="button" class="btn btn-next">Next</button>
+                                <button type="button" class="btn btn-previous">前一页</button>
+                                <button type="button" class="btn btn-next">下一页</button>
                             </div>
                         </fieldset>
 
@@ -211,8 +206,8 @@
                                     <input type="text" name="age" placeholder="年龄" class="form-age form-control" id="form-age"
                                            validata-options="validType:'Compare',compare:'>18',msg:'年龄必须大于18'">
                                 </div>
-                                <button type="button" class="btn btn-previous">Previous</button>
-                                <button type="submit" class="btn">Sign me up!</button>
+                                <button type="button" class="btn btn-previous">前一页</button>
+                                <button type="submit" class="btn">注册</button>
                             </div>
                         </fieldset>
 
