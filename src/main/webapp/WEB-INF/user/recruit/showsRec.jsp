@@ -5,6 +5,7 @@
   Date: 2016/8/13
   Time: 22:21
   To change this template use File | Settings | File Templates.
+  这个页面打算实现多对多，但是没有能够实现
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -150,9 +151,9 @@
 
                                     <div class="form-group">
                                         <label >公司名称</label>
-                                        <input name="id1" type="text" value="${recsss.id}"/>
-                                        ------
-                                        <input name="id2" type="text" value="${loginUser.id}"/>
+                                        <%--<input name="id1" type="text" value="${recsss.id}"/>--%>
+                                        <%----------测试用的id%>
+                                        <%--<input name="id2" type="text" value="${loginUser.id}"/>--%>
                                         <br/>
                                             <label ><h3>${recsss.name}</h3></label>
                                     </div>
