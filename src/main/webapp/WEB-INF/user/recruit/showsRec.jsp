@@ -59,7 +59,6 @@
 
         <!-- /.navbar-header -->
 
-
         <ul class="nav navbar-top-links navbar-right">
 
             <li class="dropdown">
@@ -74,10 +73,11 @@
                     <li><a href="${pageContext.request.contextPath}/user/passwordUI?id=${loginUser.id}"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath }/file/selectTitleByPage"><i class="fa fa-gear fa-fw"></i>公告栏</a>
+                        <a href="${pageContext.request.contextPath }/file/selectTitleByPage"><i class="fa fa-gear fa-fw"></i> 公告栏</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath}/user/loginout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+                    </li>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -101,17 +101,9 @@
                         <!-- /input-group -->
                     </li>
 
-                    <%--<li>--%>
-                        <%--<a href="#"><i class="fa fa-files-o fa-fw"></i>简历<span class="fa arrow"></span></a>--%>
-                        <%--<ul class="nav nav-two-level">--%>
-                            <li>
+                    <li>
                         <a href="${pageContext.request.contextPath}/resume/getResListByUid?id=${loginUser.id}"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历中心</a>
-                            </li>
-                            <%--<li>--%>
-                        <%--<a href="${pageContext.request.contextPath}/recruit/shows"/><i class="fa fa-bar-chart-o fa-fw"></i> 简历</a>--%>
-                            <%--</li>--%>
-                        <%--</ul>--%>
-                            <%--</li>--%>
+                    </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/recruit/getRecListByUid?id=${loginUser.id}"><i class="fa fa-table fa-fw"></i> 招聘页</a>
                     </li>
@@ -146,82 +138,79 @@
         <!-- /.navbar-static-side -->
     </nav>
 
+    <!-- Page Content -->
     <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"></h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    简历列表
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="${pageContext.request.contextPath}/resumement/save?id1=${recsss.id}&&id2=${loginUser.id}"  method="post">
+                    <fieldset>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
 
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="dataTable_wrapper">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>标题</th>
-                                    <th>职位类别</th>
-                                    <th>工作地点</th>
-                                    <th>期望薪资</th>
-                                    <th>姓名</th>
-                                    <th>性别</th>
-                                    <th>工作年限</th>
-                                    <th>学历</th>
-                                    <th>电话号码</th>
-                                    <th>修改/删除</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <c:forEach var="res"   items="${resumes}"  >
-                                    <tr >
-                                        <td><a href="${pageContext.request.contextPath}/recruit/shows"/>${res.id}</td>
-                                        <td>${res.title}</td>
-                                        <td>${res.jobCategory}</td>
-                                        <td>${res.workPlace}</td>
-                                        <td>${res.salaryExpectation}</td>
-                                        <td>${res.name}</td>
-                                        <td>${res.gender}</td>
-                                        <td>${res.workingLife}</td>
-                                        <td>${res.highestDegree}</td>
-                                        <td>${res.phoneNumber}</td>
-                                        <td><a href="${pageContext.request.contextPath}/resume/updateRes?id=${res.id}">修改</a>/<a href="${pageContext.request.contextPath}/resume/delete?id=${res.id}">删除</a></td>
-                                    </tr>
-                                </c:forEach>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                        <div class="well">
-                            <a class="btn btn-default btn-lg btn-block"  href="${pageContext.request.contextPath}/resume/listA/">添加简历</a>
-                        </div>
-                        <br/>
-                        <form action="${pageContext.request.contextPath}/file/upload.do" method="post" enctype="multipart/form-data">
-                            上传你的简历<input type="file" name="file">
-
-                            <input type="submit" value="上传">
-
-                        </form>
-                    </div>
-                    <!-- /.panel-body -->
+                                    <div class="form-group">
+                                        <label >公司名称</label>
+                                        <input name="id1" type="text" value="${recsss.id}"/>
+                                        ------
+                                        <input name="id2" type="text" value="${loginUser.id}"/>
+                                        <br/>
+                                            <label ><h3>${recsss.name}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >所属行业</label>
+                                        <br/>
+                                        <label ><h3>${recsss.industry}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >公司性质</label>
+                                        <br/>
+                                        <label ><h3>${recsss.nature}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >公司规模</label>
+                                        <br/>
+                                        <label ><h3>${recsss.companySize}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >公司简介</label>
+                                        <br/>
+                                        <label ><h3>${recsss.companyProfile}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >联系人</label>
+                                        <br/>
+                                        <label ><h3>${recsss.contacts}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>招聘电话（联系人电话）</label>
+                                        <br/>
+                                        <label ><h3>${recsss.recruitmentTelephone}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >公司地址</label>
+                                        <br/>
+                                        <label ><h3>${recsss.companyAddress}</h3></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="submit">上传简历到此公司</label>
+                                        <input class="form-control"  id="submit"  type="submit" >
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
-                <!-- /.panel -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
+        <!-- /.container-fluid -->
     </div>
+    <!-- /#page-wrapper -->
+
 </div>
+<!-- /#wrapper -->
+
 <!-- /#wrapper -->
 
 <!-- jQuery -->
@@ -233,22 +222,10 @@
 <!-- Metis Menu Plugin JavaScript -->
 <script src="${pageContext.request.contextPath}/resources/theme/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-<!-- DataTables JavaScript -->
-<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
-
 <!-- Custom Theme JavaScript -->
 <script src="${pageContext.request.contextPath}/resources/theme/dist/js/sb-admin-2.js"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-</script>
+
 
 </body>
 

@@ -9,5 +9,8 @@
     <result column="res_id" property="resId" jdbcType="BIGINT" />
     <result column="rec_id" property="recId" jdbcType="BIGINT" />
   </resultMap>
-
+  <insert id="saveRelativity" parameterType="cn.ssm.model.Resumement">
+    insert into ssm_resumement(res_id,rec_id)
+    values(#{recruit.id},#{resume.id})
+  </insert>
 </mapper>

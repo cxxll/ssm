@@ -50,7 +50,7 @@ public class ResumeController extends BaseResumeController<Resume, Long> {
                 System.out.println("error:"+ls.get(i));
             }
             model.addAttribute("res",this.resumeService.selectByPrimaryKey(id));
-            return TEMPLATE_PATH +"updateRes";
+            return "redirect:/resume/updateRes?id=" +id ;
         }
          this.resumeService.updateResume(resume);
         return  "redirect:/resume/updateRes?id=" +id;

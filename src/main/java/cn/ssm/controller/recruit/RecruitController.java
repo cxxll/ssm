@@ -48,10 +48,10 @@ public class RecruitController extends BaseRecruitController<Recruit , Long> {
                 System.out.println("error:"+ls.get(i));
             }
             model.addAttribute("rec",this.recruitService.selectByPrimaryKey(id));
-            return TEMPLATE_PATH +"updateRec";
+            return "redirect:/recruit/updateRec?id=" + id;
         }
         this.recruitService.updateRecruit(recruit);
-        return "redirect:/recruit/updateRec?id=" +id;
+        return "redirect:/recruit/updateRec?id=" + id;
 
     }
 
@@ -88,5 +88,17 @@ public class RecruitController extends BaseRecruitController<Recruit , Long> {
         Long id = recruit.getuId();
         return "redirect:/recruit/getRecListByUid?id=" +id;
 
+    }
+
+    @RequestMapping("show")
+    public String show(Long id, Model model){
+        model.addAttribute("recsss",this.recruitService.selectByPrimaryKey(id));
+        return TEMPLATE_PATH +"showsRec";
+    }
+
+    @RequestMapping("shows")
+    public String shows(Model model){
+        model.addAttribute("recss",this.recruitService.selectAll());
+        return TEMPLATE_PATH +"SearchRecruit";
     }
 }

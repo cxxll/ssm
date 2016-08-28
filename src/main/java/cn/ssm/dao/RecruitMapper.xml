@@ -31,6 +31,7 @@
   </association>
 </resultMap>
 
+  <!--招聘公司对简历多对多的resultMap-->
   <resultMap type="Recruit" id="recruitResumeMap" extends="BaseResultMap">
   <collection property="resumes" ofType="cn.ssm.model.Resume">
   <id property="id" jdbcType="BIGINT" column="id" javaType="java.lang.Long"/>
